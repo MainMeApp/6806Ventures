@@ -1,0 +1,371 @@
+// SmartCare Compliance — core data model
+// Hierarchy: Organization (Owner) -> Center -> Staff (Director/Teacher)
+// Training: Course -> Module -> Lesson -> Quiz, mapped to state-defined categories
+// Compliance: ComplianceRequirement (per state/role) -> ComplianceSnapshot (computed) -> Certificate (issued)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- Identity & tenancy ----------
+
+enum PlatformRole {
+  OWNER // pays for and administers one or more centers
+  DIRECTOR // manages a single center's staff and compliance
+  TEACHER // takes courses
+  PLATFORM_ADMIN // SmartCare staff
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  centers Center[]
+  users   User[]
+
+  @@map("organizations")
+}
+
+model State {
+  code String @id // e.g. "GA"
+  name String
+
+  categories   StateCategory[]
+  requirements ComplianceRequirement[]
+  centers      Center[]
+  courseApprovals CourseStateApproval[]
+  registryProfiles StateRegistryProfile[]
+
+  @@map("states")
+}
+
+// State-defined training category, e.g. Georgia's:
+// Child Growth & Development, Health & Safety, Culture & Diversity, Business Administration
+model StateCategory {
+  id      String @id @default(cuid())
+  stateCode String
+  state   State  @relation(fields: [stateCode], references: [code])
+  code    String // short code, e.g. "CGD", "HS", "CD", "BA"
+  name    String
+
+  courses      CourseCategory[]
+  requirements ComplianceRequirement[]
+
+  @@unique([stateCode, code])
+  @@map("state_categories")
+}
+
+model Center {
+  id             String   @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  name           String
+  stateCode      String
+  state          State    @relation(fields: [stateCode], references: [code])
+  licenseNumber  String? // state child-care license number
+  address        String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  staff       CenterStaff[]
+  enrollments Enrollment[]
+  snapshots   ComplianceSnapshot[]
+
+  @@map("centers")
+}
+
+model User {
+  id             String       @id @default(cuid())
+  organizationId String?
+  organization   Organization? @relation(fields: [organizationId], references: [id])
+  email          String       @unique
+  name           String
+  passwordHash   String
+  platformRole   PlatformRole @default(TEACHER)
+  preferredLocale String      @default("en") // "en" | "es"
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  centerMemberships CenterStaff[]
+  enrollments       Enrollment[]
+  certificates      Certificate[]
+  registryProfiles  StateRegistryProfile[]
+
+  @@map("users")
+}
+
+// A teacher's/director's per-state workforce registry linkage (e.g. Georgia's GaPDS ID),
+// required on every certificate we issue.
+model StateRegistryProfile {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  stateCode  String
+  state      State    @relation(fields: [stateCode], references: [code])
+  registryId String // the person's state workforce registry ID
+  verifiedAt DateTime?
+
+  @@unique([userId, stateCode])
+  @@map("state_registry_profiles")
+}
+
+// Join table: which centers a user works at, and their role at that specific center
+// (an Owner may not appear here at all; Directors/Teachers do).
+model CenterStaff {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  centerId  String
+  center    Center   @relation(fields: [centerId], references: [id])
+  role      PlatformRole
+  startedAt DateTime @default(now())
+  endedAt   DateTime?
+
+  @@unique([userId, centerId])
+  @@map("center_staff")
+}
+
+// ---------- Course content ----------
+
+enum CourseStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Course {
+  id          String       @id @default(cuid())
+  title       String
+  description String
+  status      CourseStatus @default(DRAFT)
+  clockHours  Decimal      @db.Decimal(5, 2) // total approved clock hours for the full course
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  categories     CourseCategory[]
+  stateApprovals CourseStateApproval[]
+  modules        Module[]
+  enrollments    Enrollment[]
+  translations   CourseTranslation[]
+
+  @@map("courses")
+}
+
+// Bilingual (or multi-lingual) copy for a course; UI falls back to English if missing.
+model CourseTranslation {
+  id       String @id @default(cuid())
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+  locale   String // "en", "es", ...
+  title    String
+  description String
+
+  @@unique([courseId, locale])
+  @@map("course_translations")
+}
+
+model CourseCategory {
+  id              String        @id @default(cuid())
+  courseId        String
+  course          Course        @relation(fields: [courseId], references: [id])
+  stateCategoryId String
+  stateCategory   StateCategory @relation(fields: [stateCategoryId], references: [id])
+
+  @@unique([courseId, stateCategoryId])
+  @@map("course_categories")
+}
+
+// A course must be individually approved, per state, with its own course code —
+// this is what prints on the certificate alongside the provider ID.
+model CourseStateApproval {
+  id                 String    @id @default(cuid())
+  courseId           String
+  course             Course    @relation(fields: [courseId], references: [id])
+  stateCode          String
+  state              State     @relation(fields: [stateCode], references: [code])
+  providerId         String // our state-issued Provider ID for this state
+  approvedCourseCode String // state-issued course approval code
+  approvedClockHours Decimal   @db.Decimal(5, 2)
+  approvedAt         DateTime?
+  expiresAt          DateTime?
+  isActive           Boolean   @default(false)
+
+  @@unique([courseId, stateCode])
+  @@map("course_state_approvals")
+}
+
+model Module {
+  id       String @id @default(cuid())
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id])
+  title    String
+  order    Int
+
+  lessons Lesson[]
+
+  @@map("modules")
+}
+
+model Lesson {
+  id             String  @id @default(cuid())
+  moduleId       String
+  module         Module  @relation(fields: [moduleId], references: [id])
+  title          String
+  order          Int
+  videoProvider  String? // "mux" | "cloudflare_stream"
+  videoAssetId   String? // provider-side asset/video ID
+  durationSeconds Int?
+  bodyMarkdown   String? // supplemental text content
+
+  quiz     Quiz?
+  progress LessonProgress[]
+
+  @@map("lessons")
+}
+
+model Quiz {
+  id             String @id @default(cuid())
+  lessonId       String @unique
+  lesson         Lesson @relation(fields: [lessonId], references: [id])
+  passThreshold  Int    @default(80) // percent required to pass
+
+  questions Question[]
+
+  @@map("quizzes")
+}
+
+model Question {
+  id            String   @id @default(cuid())
+  quizId        String
+  quiz          Quiz     @relation(fields: [quizId], references: [id])
+  order         Int
+  prompt        String
+  choices       Json // string[]
+  correctIndex  Int
+
+  @@map("questions")
+}
+
+// ---------- Enrollment & progress ----------
+
+enum EnrollmentStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model Enrollment {
+  id         String           @id @default(cuid())
+  userId     String
+  user       User             @relation(fields: [userId], references: [id])
+  courseId   String
+  course     Course           @relation(fields: [courseId], references: [id])
+  centerId   String
+  center     Center           @relation(fields: [centerId], references: [id])
+  status     EnrollmentStatus @default(NOT_STARTED)
+  startedAt  DateTime?
+  completedAt DateTime?
+  createdAt  DateTime         @default(now())
+
+  lessonProgress LessonProgress[]
+  certificate    Certificate?
+
+  @@unique([userId, courseId])
+  @@map("enrollments")
+}
+
+model LessonProgress {
+  id             String     @id @default(cuid())
+  enrollmentId   String
+  enrollment     Enrollment @relation(fields: [enrollmentId], references: [id])
+  lessonId       String
+  lesson         Lesson     @relation(fields: [lessonId], references: [id])
+  watchedSeconds Int        @default(0)
+  completed      Boolean    @default(false)
+  quizScore      Int? // percent, if the lesson had a quiz
+  completedAt    DateTime?
+
+  @@unique([enrollmentId, lessonId])
+  @@map("lesson_progress")
+}
+
+// ---------- Certificates ----------
+
+model Certificate {
+  id                 String     @id @default(cuid())
+  enrollmentId       String     @unique
+  enrollment         Enrollment @relation(fields: [enrollmentId], references: [id])
+  userId             String
+  user               User       @relation(fields: [userId], references: [id])
+  certificateNumber  String     @unique
+  stateCode          String
+  providerId         String // our state Provider ID at time of issuance
+  approvedCourseCode String // state course code at time of issuance
+  clockHours         Decimal    @db.Decimal(5, 2)
+  registryId         String? // the student's state workforce registry ID
+  issuedAt           DateTime   @default(now())
+  pdfPath            String? // storage path/URL of the generated PDF
+
+  @@map("certificates")
+}
+
+// ---------- Compliance ----------
+
+enum RequirementPeriod {
+  CALENDAR_YEAR
+  ROLLING_12_MONTH
+}
+
+// A state's annual training mandate, optionally scoped to one category
+// (e.g. Georgia: 10 hrs/year total, plus a 2 hr/year literacy-specific sub-requirement).
+model ComplianceRequirement {
+  id              String            @id @default(cuid())
+  stateCode       String
+  state           State             @relation(fields: [stateCode], references: [code])
+  stateCategoryId String? // null = applies across all categories
+  stateCategory   StateCategory?    @relation(fields: [stateCategoryId], references: [id])
+  appliesToRole   PlatformRole // DIRECTOR or TEACHER
+  minHours        Decimal           @db.Decimal(5, 2)
+  period          RequirementPeriod @default(CALENDAR_YEAR)
+  description     String
+
+  @@map("compliance_requirements")
+}
+
+// Cached, point-in-time compliance calculation for a center, so the dashboard
+// doesn't recompute the full engine on every page load.
+model ComplianceSnapshot {
+  id              String   @id @default(cuid())
+  centerId        String
+  center          Center   @relation(fields: [centerId], references: [id])
+  periodStart     DateTime
+  periodEnd       DateTime
+  score           Int // 0-100
+  staffTotal      Int
+  staffCompliant  Int
+  generatedAt     DateTime @default(now())
+  details         Json // per-staff breakdown, see compliance engine
+
+  @@map("compliance_snapshots")
+}
+
+// Outbound sync attempts to a state registry (mocked until official API partnership).
+model RegistrySyncLog {
+  id         String   @id @default(cuid())
+  stateCode  String
+  entityType String // "certificate" | "enrollment" | "staff_profile"
+  entityId   String
+  payload    Json
+  status     String // "PENDING" | "SENT" | "ACKNOWLEDGED" | "FAILED"
+  respondedAt DateTime?
+  createdAt  DateTime @default(now())
+
+  @@map("registry_sync_logs")
+}
