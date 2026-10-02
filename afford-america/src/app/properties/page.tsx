@@ -13,8 +13,8 @@ export default function PropertiesPage() {
     <>
       <PageHero eyebrow="Properties & availability" title="Furnished homes in West Atlanta">
         <p>
-          {totalAvailableBeds()} beds currently open across {properties.length} homes. Every room is double-occupancy,
-          fully furnished, and covered by the same all-inclusive monthly package.
+          {totalAvailableBeds()} beds currently open across {properties.length} homes. Every bedroom is shared by two
+          residents, fully furnished, and covered by the same all-inclusive monthly package.
         </p>
       </PageHero>
       <Section>

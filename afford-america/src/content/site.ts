@@ -19,11 +19,17 @@ export const site = {
 export const monthlyPackage = {
   price: 1650,
   label: "All-inclusive monthly package",
-  occupancy: "Double-occupancy furnished room",
+  occupancy: "Shared furnished bedroom, two residents per room",
   includes: [
-    { title: "Room and board", detail: "A furnished, double-occupancy bedroom in a renovated home." },
+    {
+      title: "Furnished room and board",
+      detail: "A shared bedroom in a renovated home with bed, linens, and dresser ready on day one. Residents bring personal clothing.",
+    },
     { title: "All utilities and Wi-Fi", detail: "Power, water, gas, trash, and high-speed internet. No separate bills." },
-    { title: "Move-in ready furnishings", detail: "Bed, linens, dresser, and shared living spaces. Residents bring personal clothing." },
+    {
+      title: "TV access and personal headphones",
+      detail: "Every resident gets TV access and their own Bluetooth headphones, so shows and music never disturb a roommate.",
+    },
     { title: "Weekly grocery coordination", detail: "Grocery procurement logistics each week. EBT/SNAP compatible." },
     { title: "Daily common-area sanitation", detail: "Kitchens, bathrooms, and shared spaces cleaned every day." },
     { title: "Smart medication dispenser rental", detail: "Automated reminder and dispensing hardware residents use on their own schedule." },
@@ -77,7 +83,7 @@ export const residentCriteria = {
     "Manages their own daily living activities (bathing, dressing, eating) without staff assistance",
     "Self-administers their own medications",
     "Has a stable monthly income source or voucher to cover the package",
-    "Comfortable sharing a double-occupancy room and common spaces",
+    "Comfortable sharing a bedroom with one roommate and common spaces",
   ],
   notAFit: [
     "Needs skilled nursing or hands-on personal care from staff",

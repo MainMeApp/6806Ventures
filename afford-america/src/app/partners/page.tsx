@@ -14,6 +14,10 @@ const faqs = [
     a: "When a bed is open and funding is confirmed, move-in can happen within days. Rooms are furnished and utilities are already on.",
   },
   {
+    q: "How do shared bedrooms work?",
+    a: "Each bedroom is shared by two residents, and each resident has their own bed and storage. Every resident also gets TV access and their own Bluetooth headphones, so one person can watch or listen while the other rests.",
+  },
+  {
     q: "Do you provide medical or personal care?",
     a: notProvided,
   },
