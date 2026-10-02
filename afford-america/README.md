@@ -40,7 +40,7 @@ Landscape photos around 1600px wide work best. Next.js resizes and compresses th
 - Business details, package, funding sources, resident criteria: `src/content/site.ts`
 - Properties (names, beds available, features): `src/content/properties.ts`
 
-Both files mark placeholders with `TODO`. Phone, email, and every property entry are placeholders today.
+`properties.ts` marks placeholders with `TODO`; every property entry is a placeholder today. The site has no phone number by design; all contact goes to the email in `site.ts`.
 
 ## Form submissions
 

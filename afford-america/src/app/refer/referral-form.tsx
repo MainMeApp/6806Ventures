@@ -85,8 +85,8 @@ export function ReferralForm({
           <YesNoField name="veteran" label="Is the client a veteran?" required errors={e.veteran} />
           <YesNoField
             name="monthlyIncomeConfirmed"
-            label="Income or voucher confirmed?"
-            hint={`Covers the $${monthlyPackage.price.toLocaleString("en-US")} monthly package`}
+            label="Is 100% of the monthly package covered?"
+            hint={`Voucher, benefits, or combined sources covering the full $${monthlyPackage.price.toLocaleString("en-US")}`}
             required
             errors={e.monthlyIncomeConfirmed}
           />

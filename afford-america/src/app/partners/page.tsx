@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "How is rent paid?",
-    a: "Through a housing voucher, direct deposit of benefits, or direct pay. We can coordinate with HUD-VASH, GHVP, and representative payees.",
+    a: "The full monthly package must be covered before move-in, by a housing voucher, benefits, or a combination of sources. We coordinate directly with HUD-VASH, GHVP, and representative payees.",
   },
   {
     q: "Can we set up a standing referral agreement?",
@@ -81,7 +81,7 @@ export default function PartnersPage() {
               ))}
             </ul>
             <p className="mt-5 text-sm text-pine-700">
-              Not sure? Call us at {site.phone}. We would rather talk it through than turn someone away on paper.
+              Not sure? Email us at {site.email}. We would rather talk it through than turn someone away on paper.
             </p>
           </div>
         </div>

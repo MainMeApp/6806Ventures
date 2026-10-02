@@ -21,8 +21,8 @@ export default function LivingHerePage() {
     <>
       <PageHero eyebrow="Living here" title="Independent living, without the bills and logistics">
         <p>
-          Residents live on their own terms in a shared, furnished home. We handle the household so they can focus on
-          health, work, family, and community.
+          Residents live on their own terms in a shared, furnished home. Housing is fully covered before move-in, and we
+          handle the household so residents can focus on their health, family, and community.
         </p>
       </PageHero>
 

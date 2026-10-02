@@ -71,7 +71,7 @@ export async function submitReferral(_prev: FormState, formData: FormData): Prom
         "Age range": d.clientAgeRange,
         Veteran: d.veteran,
         "Funding source": d.fundingSource,
-        "Monthly income/voucher confirmed": d.monthlyIncomeConfirmed,
+        "Full package covered (100%)": d.monthlyIncomeConfirmed,
         Ambulatory: d.ambulatory,
         "Independent with daily living activities": d.independentAdls,
         "Self-administers medications": d.selfMedicates,
@@ -84,7 +84,7 @@ export async function submitReferral(_prev: FormState, formData: FormData): Prom
     console.error(err);
     return {
       status: "error",
-      message: "We could not send your referral. Please call us or try again in a few minutes.",
+      message: "We could not send your referral. Please email info@affordamerica.org or try again in a few minutes.",
     };
   }
 
@@ -140,7 +140,7 @@ export async function submitTourRequest(_prev: FormState, formData: FormData): P
     console.error(err);
     return {
       status: "error",
-      message: "We could not send your message. Please call us or try again in a few minutes.",
+      message: "We could not send your message. Please email info@affordamerica.org or try again in a few minutes.",
     };
   }
 

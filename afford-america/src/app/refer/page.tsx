@@ -18,11 +18,11 @@ export default async function ReferPage({ searchParams }: PageProps<"/refer">) {
       <PageHero eyebrow="Placement referral portal" title="Refer a client">
         <p>
           For case managers, social workers, discharge planners, and housing coordinators. Takes about three minutes.
-          We respond within one business day. Urgent placement? Call{" "}
-          <a href={site.phoneHref} className="font-semibold text-white underline">
-            {site.phone}
-          </a>
-          .
+          We respond within one business day. Urgent placement? Email{" "}
+          <a href={`mailto:${site.email}`} className="font-semibold text-white underline">
+            {site.email}
+          </a>{" "}
+          with &ldquo;Urgent&rdquo; in the subject line.
         </p>
       </PageHero>
       <Section>

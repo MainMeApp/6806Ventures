@@ -30,14 +30,8 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
           />
           <aside className="h-fit space-y-6 rounded-3xl bg-pine-900 p-8 text-pine-100">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-pine-200">Call</p>
-              <a href={site.phoneHref} className="font-display text-2xl font-semibold text-white">
-                {site.phone}
-              </a>
-            </div>
-            <div>
               <p className="text-sm font-semibold uppercase tracking-widest text-pine-200">Email</p>
-              <a href={`mailto:${site.email}`} className="break-all text-lg text-white">
+              <a href={`mailto:${site.email}`} className="break-all font-display text-2xl font-semibold text-white">
                 {site.email}
               </a>
             </div>

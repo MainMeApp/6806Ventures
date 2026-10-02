@@ -8,10 +8,7 @@ export const site = {
   tagline: "All-inclusive supportive independent living in West Atlanta.",
   description:
     "Fully furnished, non-clinical supportive independent living in West Atlanta (30314) for adults 55+, veterans, and adults who thrive in a structured home. One flat monthly package. Referrals welcome from case managers, social workers, and discharge planners.",
-  // TODO: replace with real contact details.
-  phone: "(404) 555-0100",
-  phoneHref: "tel:+14045550100",
-  email: "placements@affordamerica.example",
+  email: "info@affordamerica.org",
   serviceArea: "West Atlanta, GA 30314",
   hours: "Monday to Friday, 9am to 6pm. Same-week tours available.",
 };
@@ -49,6 +46,9 @@ export const fundingSources = [
   "Direct pay",
 ];
 
+export const fundingRequirement =
+  "We accept residents whose full monthly package is covered before move-in, through a voucher, benefits, or a combination of sources.";
+
 export const audiences = [
   {
     id: "veterans",
@@ -85,7 +85,7 @@ export const residentCriteria = {
     "Adult who is independent and ambulatory",
     "Manages their own daily living activities (bathing, dressing, eating) without staff assistance",
     "Self-administers their own medications",
-    "Has a stable monthly income source or voucher to cover the package",
+    "Has 100% of the monthly package covered by a voucher, benefits, or a combination of sources",
     "Comfortable sharing a bedroom with one roommate and common spaces",
   ],
   notAFit: [

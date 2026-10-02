@@ -61,7 +61,7 @@ export function ContactForm({
       </div>
       <TextField
         name="preferredTimes"
-        label="Best days and times for a tour or call"
+        label="Best days and times for a tour"
         hint="e.g. Weekday mornings, or Tuesday after 2pm"
         errors={e.preferredTimes}
       />

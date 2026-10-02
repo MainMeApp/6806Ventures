@@ -1,6 +1,6 @@
 import { ButtonLink, Check, Eyebrow, H2, Section } from "@/components/ui";
 import { PropertyCard } from "@/components/property-card";
-import { audiences, fundingSources, monthlyPackage, site } from "@/content/site";
+import { audiences, fundingRequirement, fundingSources, monthlyPackage, site } from "@/content/site";
 import { formatAvailabilityDate, properties, totalAvailableBeds, totalBeds } from "@/content/properties";
 
 export default function Home() {
@@ -105,7 +105,7 @@ export default function Home() {
         <H2>From referral to move-in, usually within days</H2>
         <ol className="mt-10 grid gap-6 md:grid-cols-4">
           {[
-            ["Send a referral", "Submit the short online form or call us. No medical records needed."],
+            ["Send a referral", "Submit the short online form or email us. No medical records needed."],
             ["Quick screening call", "We confirm fit, funding, and move-in timing with you within one business day."],
             ["Tour the home", "In person or by video, with the client, their case manager, or both."],
             ["Move in", "The room is furnished and utilities are on. The resident brings personal clothing."],
@@ -128,8 +128,8 @@ export default function Home() {
             <Eyebrow>Funding accepted</Eyebrow>
             <H2>Works with the income your clients already have</H2>
             <p className="mt-4 text-lg">
-              The flat ${monthlyPackage.price.toLocaleString("en-US")} package is designed to fit within common fixed
-              incomes and voucher programs. No surprise bills for utilities or internet.
+              {fundingRequirement} One flat ${monthlyPackage.price.toLocaleString("en-US")} package, with no surprise
+              bills for utilities or internet.
             </p>
           </div>
           <ul className="flex flex-wrap gap-3">
@@ -147,17 +147,17 @@ export default function Home() {
         <div className="rounded-3xl bg-clay px-8 py-12 text-white sm:px-12">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">Have a client who needs housing now?</h2>
           <p className="mt-3 max-w-2xl text-lg text-white/90">
-            Send a referral in about three minutes, or call {site.phone} to talk with a placement coordinator.
+            Send a referral in about three minutes, or email {site.email} to reach a placement coordinator.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <ButtonLink href="/refer" variant="light">
               Start a Referral
             </ButtonLink>
             <a
-              href={site.phoneHref}
+              href={`mailto:${site.email}`}
               className="inline-flex items-center rounded-full border-2 border-white px-6 py-3 font-semibold hover:bg-white/10"
             >
-              Call {site.phone}
+              Email {site.email}
             </a>
           </div>
         </div>
