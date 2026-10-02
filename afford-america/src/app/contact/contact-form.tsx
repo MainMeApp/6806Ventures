@@ -45,6 +45,7 @@ export function ContactForm({
           options={[
             { value: "tour", label: "Schedule a property tour" },
             { value: "availability", label: "Check bed availability" },
+            { value: "waitlist", label: "Join a property waitlist" },
             { value: "partnership", label: "Referral agreement / partnership" },
             { value: "other", label: "Something else" },
           ]}

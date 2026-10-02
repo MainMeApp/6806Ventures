@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 };
 
 const rhythm = [
-  ["Every day", "Kitchens, bathrooms, and shared spaces are cleaned. Residents keep their own room tidy."],
+  ["Every day", "The house host sanitizes kitchens, bathrooms, and shared spaces. Residents keep their own room tidy."],
   ["Every week", "Grocery orders are coordinated and delivered, including EBT/SNAP purchases."],
-  ["Every month", "One flat payment. No utility, internet, or furniture bills."],
+  ["Every two weeks", "A professional cleaning crew cleans every common area, top to bottom."],
   ["Any time", "Residents come and go, keep their own appointments, and welcome their own care providers."],
 ];
 
@@ -45,7 +45,7 @@ export default function LivingHerePage() {
         <dl className="mt-8 grid gap-6 md:grid-cols-2">
           {rhythm.map(([when, what]) => (
             <div key={when} className="flex gap-5 rounded-2xl bg-white p-6 ring-1 ring-pine-100">
-              <dt className="w-28 shrink-0 font-display text-xl font-semibold text-clay">{when}</dt>
+              <dt className="w-36 shrink-0 font-display text-xl font-semibold text-clay">{when}</dt>
               <dd>{what}</dd>
             </div>
           ))}

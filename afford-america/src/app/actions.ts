@@ -99,7 +99,7 @@ const tourSchema = z.object({
   organization: text(),
   email: z.string().trim().email("Enter a valid email."),
   phone: required("Phone", 40),
-  inquiryType: z.enum(["tour", "partnership", "availability", "other"], { message: "Choose a topic." }),
+  inquiryType: z.enum(["tour", "partnership", "availability", "waitlist", "other"], { message: "Choose a topic." }),
   preferredProperty: text(),
   preferredTimes: text(300),
   message: text(1500),

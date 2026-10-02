@@ -31,7 +31,10 @@ export const monthlyPackage = {
       detail: "Every resident gets TV access and their own Bluetooth headphones, so shows and music never disturb a roommate.",
     },
     { title: "Weekly grocery coordination", detail: "Grocery procurement logistics each week. EBT/SNAP compatible." },
-    { title: "Daily common-area sanitation", detail: "Kitchens, bathrooms, and shared spaces cleaned every day." },
+    {
+      title: "Daily sanitizing and professional cleaning",
+      detail: "The house host sanitizes kitchens, bathrooms, and shared spaces every day. A professional cleaning crew cleans them every two weeks.",
+    },
     { title: "Smart medication dispenser rental", detail: "Automated reminder and dispensing hardware residents use on their own schedule." },
   ],
 };
@@ -59,7 +62,7 @@ export const audiences = [
     title: "Adults 55+",
     who: "Empowerline options counselors, referral coordinators, and aging services housing specialists.",
     detail:
-      "Independent living with daily cleaning, grocery logistics, and medication reminder hardware, without the cost of institutional care.",
+      "Independent living with daily sanitizing, professional cleaning, grocery logistics, and medication reminder hardware, without the cost of institutional care.",
   },
   {
     id: "behavioral-health",

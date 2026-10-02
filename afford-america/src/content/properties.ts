@@ -4,6 +4,15 @@
 //
 // TODO: every entry below is a placeholder. Replace names, streets, bed
 // counts, and features with the real portfolio before launch.
+//
+// Keep availableBeds accurate: the "only N left" and waitlist messaging is
+// driven by it, and overstating scarcity costs referral partners' trust.
+
+// Update this date whenever availableBeds changes (YYYY-MM-DD).
+export const availabilityUpdated = "2026-10-02";
+
+// At or below this many open beds, a home is flagged as nearly full.
+export const LOW_AVAILABILITY = 2;
 
 export type Property = {
   slug: string;
@@ -29,7 +38,7 @@ export const properties: Property[] = [
     neighborhood: "West Atlanta",
     zip: "30314",
     totalBeds: 6,
-    availableBeds: 6,
+    availableBeds: 2,
     bedrooms: 3,
     bathrooms: 2,
     summary:
@@ -43,7 +52,7 @@ export const properties: Property[] = [
     neighborhood: "West Atlanta",
     zip: "30314",
     totalBeds: 6,
-    availableBeds: 4,
+    availableBeds: 1,
     bedrooms: 3,
     bathrooms: 2,
     summary:
@@ -57,7 +66,7 @@ export const properties: Property[] = [
     neighborhood: "West Atlanta",
     zip: "30314",
     totalBeds: 4,
-    availableBeds: 2,
+    availableBeds: 0,
     bedrooms: 2,
     bathrooms: 1,
     summary:
@@ -73,4 +82,16 @@ export function getProperty(slug: string) {
 
 export function totalAvailableBeds() {
   return properties.reduce((sum, p) => sum + p.availableBeds, 0);
+}
+
+export function totalBeds() {
+  return properties.reduce((sum, p) => sum + p.totalBeds, 0);
+}
+
+export function formatAvailabilityDate() {
+  return new Date(`${availabilityUpdated}T12:00:00`).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }

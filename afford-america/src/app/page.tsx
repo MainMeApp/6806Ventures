@@ -1,10 +1,11 @@
 import { ButtonLink, Check, Eyebrow, H2, Section } from "@/components/ui";
 import { PropertyCard } from "@/components/property-card";
 import { audiences, fundingSources, monthlyPackage, site } from "@/content/site";
-import { properties, totalAvailableBeds } from "@/content/properties";
+import { formatAvailabilityDate, properties, totalAvailableBeds, totalBeds } from "@/content/properties";
 
 export default function Home() {
   const available = totalAvailableBeds();
+  const total = totalBeds();
 
   return (
     <>
@@ -46,11 +47,14 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            {available > 0 && (
-              <p className="mt-6 rounded-xl bg-pine-50 px-4 py-3 text-center font-semibold text-pine-800">
-                {available} beds open for immediate move-in
+            <div className="mt-6 rounded-xl bg-pine-50 px-4 py-3">
+              <p className="font-semibold text-pine-900">
+                {available === 0
+                  ? "All homes are full right now. Join the waitlist."
+                  : `Only ${available} of ${total} beds open`}
               </p>
-            )}
+              <p className="text-sm text-pine-700">Availability as of {formatAvailabilityDate()}</p>
+            </div>
           </div>
         </div>
       </div>

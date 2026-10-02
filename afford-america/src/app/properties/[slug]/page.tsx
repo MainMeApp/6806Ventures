@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ButtonLink, Check, Section } from "@/components/ui";
-import { AvailabilityBadge } from "@/components/property-card";
+import { AvailabilityBadge, OccupancyBar } from "@/components/property-card";
 import { PropertyPhoto } from "@/components/property-photo";
-import { getProperty, properties } from "@/content/properties";
+import { formatAvailabilityDate, getProperty, properties } from "@/content/properties";
 import { monthlyPackage, notProvided } from "@/content/site";
 import { getGalleryImages, getMainImage } from "@/lib/property-images";
 
@@ -133,8 +133,16 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
                 </li>
               ))}
             </ul>
+            <div className="mt-6">
+              <OccupancyBar total={property.totalBeds} available={property.availableBeds} />
+              <p className="mt-1 text-xs text-pine-700">As of {formatAvailabilityDate()}</p>
+            </div>
             <div className="mt-6 flex flex-col gap-3">
-              <ButtonLink href={`/refer?property=${property.slug}`}>Refer a client here</ButtonLink>
+              {property.availableBeds === 0 ? (
+                <ButtonLink href={`/contact?property=${property.slug}&topic=waitlist`}>Join the waitlist</ButtonLink>
+              ) : (
+                <ButtonLink href={`/refer?property=${property.slug}`}>Refer a client here</ButtonLink>
+              )}
               <ButtonLink href={`/contact?property=${property.slug}`} variant="secondary">
                 Request a tour
               </ButtonLink>

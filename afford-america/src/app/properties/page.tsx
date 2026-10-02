@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/ui";
 import { PropertyCard } from "@/components/property-card";
-import { properties, totalAvailableBeds } from "@/content/properties";
+import { formatAvailabilityDate, properties, totalAvailableBeds, totalBeds } from "@/content/properties";
 
 export const metadata: Metadata = {
   title: "Properties & Availability",
@@ -13,8 +13,9 @@ export default function PropertiesPage() {
     <>
       <PageHero eyebrow="Properties & availability" title="Furnished homes in West Atlanta">
         <p>
-          {totalAvailableBeds()} beds currently open across {properties.length} homes. Every bedroom is shared by two
-          residents, fully furnished, and covered by the same all-inclusive monthly package.
+          Only {totalAvailableBeds()} of {totalBeds()} beds are open across our {properties.length} homes. Each home is
+          small by design, so openings are limited. Every bedroom is shared by two residents, fully furnished, and
+          covered by the same all-inclusive monthly package.
         </p>
       </PageHero>
       <Section>
@@ -24,8 +25,8 @@ export default function PropertiesPage() {
           ))}
         </div>
         <p className="mt-10 text-sm text-pine-700">
-          Availability is updated regularly. Call or send a referral to confirm a bed before discussing it with a
-          client.
+          Availability as of {formatAvailabilityDate()}. Call or send a referral to confirm a bed before discussing it
+          with a client. When a home is full, ask to join its waitlist.
         </p>
       </Section>
     </>

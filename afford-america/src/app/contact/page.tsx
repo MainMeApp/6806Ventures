@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Schedule an in-person or video tour of an Afford America home, or contact our placement team.",
 };
 
-const TOPICS = new Set(["tour", "availability", "partnership", "other"]);
+const TOPICS = new Set(["tour", "availability", "waitlist", "partnership", "other"]);
 
 export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
   const { property, topic } = await searchParams;

@@ -31,7 +31,7 @@ export default async function ReferPage({ searchParams }: PageProps<"/refer">) {
             defaultProperty={defaultProperty}
             propertyOptions={properties.map((p) => ({
               value: p.slug,
-              label: `${p.name} (${p.availableBeds} open)`,
+              label: `${p.name} (${p.availableBeds === 0 ? "full, waitlist" : `${p.availableBeds} open`})`,
             }))}
           />
         </div>
