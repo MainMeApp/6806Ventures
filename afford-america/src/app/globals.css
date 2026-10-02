@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pine-50: #f1f7f4;
+  --color-pine-100: #dcece3;
+  --color-pine-200: #b9d8c8;
+  --color-pine-600: #2f6b52;
+  --color-pine-700: #245641;
+  --color-pine-800: #1c4333;
+  --color-pine-900: #143025;
+  --color-cream: #fbf7f0;
+  --color-sand: #f2e9da;
+  --color-clay: #c9672f;
+  --color-clay-dark: #a8521f;
+  --color-ink: #1f2a24;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+/* Visible keyboard focus everywhere; many visitors navigate by keyboard. */
+:focus-visible {
+  outline: 3px solid var(--color-clay);
+  outline-offset: 2px;
+}
