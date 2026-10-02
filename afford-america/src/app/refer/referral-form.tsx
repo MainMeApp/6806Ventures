@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { submitReferral, type FormState } from "@/app/actions";
+import { monthlyPackage } from "@/content/site";
 import { FormStatus, Honeypot, SelectField, TextArea, TextField, YesNoField } from "@/components/form-fields";
 
 const initial: FormState = { status: "idle" };
@@ -85,7 +86,7 @@ export function ReferralForm({
           <YesNoField
             name="monthlyIncomeConfirmed"
             label="Income or voucher confirmed?"
-            hint="Covers the $1,500 monthly package"
+            hint={`Covers the $${monthlyPackage.price.toLocaleString("en-US")} monthly package`}
             required
             errors={e.monthlyIncomeConfirmed}
           />

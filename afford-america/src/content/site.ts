@@ -17,7 +17,7 @@ export const site = {
 };
 
 export const monthlyPackage = {
-  price: 1500,
+  price: 1650,
   label: "All-inclusive monthly package",
   occupancy: "Double-occupancy furnished room",
   includes: [

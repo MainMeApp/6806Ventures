@@ -28,7 +28,7 @@ export default function LivingHerePage() {
 
       <Section>
         <Eyebrow>What is included</Eyebrow>
-        <H2>Everything in the ${monthlyPackage.price.toLocaleString()} monthly package</H2>
+        <H2>Everything in the ${monthlyPackage.price.toLocaleString("en-US")} monthly package</H2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {monthlyPackage.includes.map((i) => (
             <div key={i.title} className="rounded-2xl bg-white p-7 ring-1 ring-pine-100">

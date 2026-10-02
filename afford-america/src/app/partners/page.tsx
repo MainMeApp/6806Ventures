@@ -101,7 +101,7 @@ export default function PartnersPage() {
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <Eyebrow>Package</Eyebrow>
-            <H2>${monthlyPackage.price.toLocaleString()} per month, all-inclusive</H2>
+            <H2>${monthlyPackage.price.toLocaleString("en-US")} per month, all-inclusive</H2>
             <ul className="mt-6 space-y-4">
               {monthlyPackage.includes.map((i) => (
                 <li key={i.title} className="flex gap-3">

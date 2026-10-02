@@ -122,7 +122,7 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
           <aside className="h-fit rounded-3xl bg-white p-7 ring-1 ring-pine-100 lg:sticky lg:top-24">
             <p className="text-sm font-semibold uppercase tracking-widest text-clay">All-inclusive</p>
             <p className="mt-1 font-display text-4xl font-semibold text-pine-900">
-              ${monthlyPackage.price.toLocaleString()}
+              ${monthlyPackage.price.toLocaleString("en-US")}
               <span className="text-base font-normal text-pine-700"> / month</span>
             </p>
             <ul className="mt-5 space-y-2 text-base">

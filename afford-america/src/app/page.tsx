@@ -34,7 +34,7 @@ export default function Home() {
           <div className="rounded-3xl bg-white p-8 text-ink shadow-xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-clay">{monthlyPackage.label}</p>
             <p className="mt-2 font-display text-5xl font-semibold text-pine-900">
-              ${monthlyPackage.price.toLocaleString()}
+              ${monthlyPackage.price.toLocaleString("en-US")}
               <span className="text-lg font-normal text-pine-700"> / month</span>
             </p>
             <p className="mt-1 text-sm text-pine-700">{monthlyPackage.occupancy}</p>
@@ -124,7 +124,7 @@ export default function Home() {
             <Eyebrow>Funding accepted</Eyebrow>
             <H2>Works with the income your clients already have</H2>
             <p className="mt-4 text-lg">
-              The flat ${monthlyPackage.price.toLocaleString()} package is designed to fit within common fixed
+              The flat ${monthlyPackage.price.toLocaleString("en-US")} package is designed to fit within common fixed
               incomes and voucher programs. No surprise bills for utilities or internet.
             </p>
           </div>
