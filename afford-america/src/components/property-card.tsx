@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { displayAddress, LOW_AVAILABILITY, type Property } from "@/content/properties";
-import { getMainImage, mainImageAlt } from "@/lib/property-images";
+import { getGalleryImages, getMainImage, mainImageAlt } from "@/lib/property-images";
 import { PropertyPhoto } from "./property-photo";
 
 export function AvailabilityBadge({ available }: { available: number }) {
@@ -45,14 +45,22 @@ export function OccupancyBar({ total, available, onDark = false }: { total: numb
 
 export function PropertyCard({ property }: { property: Property }) {
   const main = getMainImage(property.slug);
+  const photoCount = main ? 1 + getGalleryImages(property.slug).length : 0;
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-navy-100 transition-shadow hover:shadow-md">
-      <PropertyPhoto
-        src={main}
-        alt={mainImageAlt(main, property.name, property.mainPhotoAlt)}
-        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-        className="aspect-4/3"
-      />
+      <div className="relative">
+        <PropertyPhoto
+          src={main}
+          alt={mainImageAlt(main, property.name, property.mainPhotoAlt)}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="aspect-4/3"
+        />
+        {photoCount > 1 && (
+          <span className="absolute bottom-3 right-3 rounded-full bg-navy-900/80 px-3 py-1 text-xs font-semibold text-white">
+            {photoCount} photos
+          </span>
+        )}
+      </div>
       <div className="flex flex-1 flex-col p-6">
         <AvailabilityBadge available={property.availableBeds} />
         <h3 className="mt-3 font-display text-2xl font-semibold text-navy-900">

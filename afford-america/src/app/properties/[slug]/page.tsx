@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ButtonLink, Check, Section } from "@/components/ui";
 import { AvailabilityBadge, OccupancyBar } from "@/components/property-card";
 import { PropertyPhoto } from "@/components/property-photo";
+import { PhotoCarousel } from "@/components/photo-carousel";
 import { displayAddress, formatAvailabilityDate, getProperty, properties } from "@/content/properties";
 import { GetAroundList } from "@/components/get-around";
 import { monthlyPackage, notProvided } from "@/content/site";
@@ -32,8 +33,12 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
   const property = getProperty(slug);
   if (!property) notFound();
 
+  // Main photo first, then the rest in filename order.
   const main = getMainImage(slug);
-  const gallery = getGalleryImages(slug);
+  const photos = [
+    ...(main ? [{ src: main, alt: mainImageAlt(main, property.name, property.mainPhotoAlt) }] : []),
+    ...getGalleryImages(slug).map((src) => ({ src, alt: `${property.name}: ${photoLabel(src)}` })),
+  ];
 
   return (
     <>
@@ -42,13 +47,18 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
           <Link href="/properties" className="text-sm font-medium text-navy-200 hover:text-white">
             &larr; All properties
           </Link>
-          <PropertyPhoto
-            src={main}
-            alt={mainImageAlt(main, property.name, property.mainPhotoAlt)}
-            sizes="(min-width: 1152px) 1152px, 100vw"
-            preload
-            className="mt-4 aspect-4/3 rounded-3xl sm:aspect-[2/1]"
-          />
+          <div className="mt-4">
+            {photos.length > 0 ? (
+              <PhotoCarousel photos={photos} label={`Photos of ${property.name}`} />
+            ) : (
+              <PropertyPhoto
+                src={null}
+                alt={property.name}
+                sizes="(min-width: 1152px) 1152px, 100vw"
+                className="aspect-4/3 rounded-3xl sm:aspect-[2/1]"
+              />
+            )}
+          </div>
         </div>
       </div>
 
@@ -75,23 +85,6 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
                 </div>
               ))}
             </dl>
-
-            {gallery.length > 0 && (
-              <div className="mt-10">
-                <h2 className="font-display text-2xl font-semibold text-navy-900">Photos</h2>
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  {gallery.map((src) => (
-                    <PropertyPhoto
-                      key={src}
-                      src={src}
-                      alt={`${property.name}: ${photoLabel(src)}`}
-                      sizes="(min-width: 640px) 50vw, 100vw"
-                      className="aspect-4/3 rounded-xl"
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
 
             <div className="mt-10">
               <h2 className="font-display text-2xl font-semibold text-navy-900">Getting around</h2>

@@ -29,8 +29,8 @@ npm run lint
 ## Adding property photos
 
 1. Put photos in `public/properties/<slug>/`, e.g. `public/properties/sharon-street/`. The slugs are `sharon-street`, `chappell-road`, and `chicamauga-avenue`.
-2. Name the main photo `main.jpg` (`.jpeg`, `.png`, `.webp`, `.avif` also work). It is used on the cards and as the hero on the property page.
-3. Any other images in the same folder appear as a gallery on that property's page, sorted by filename.
+2. Name the first photo `main.jpg` (`.jpeg`, `.png`, `.webp`, `.avif` also work). It shows on the property card and opens the photo slideshow on the property page.
+3. Every other image in the folder joins the slideshow after it, in filename order, so prefix them with numbers: `01-shared-bedroom.jpg`, `02-kitchen.jpg`. The words after the number become the photo's description for screen readers.
 4. Rebuild or redeploy. Until a photo exists, a "Photo coming soon" placeholder is shown.
 
 Landscape photos around 1600px wide work best. Next.js resizes and compresses them automatically.
