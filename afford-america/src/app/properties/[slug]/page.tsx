@@ -89,7 +89,13 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
             {property.privateRoom && (
               <div className="mt-10 rounded-3xl bg-navy-800 p-7 text-white sm:p-8">
                 <p className="text-sm font-semibold uppercase tracking-widest text-sky">Also available</p>
-                <h2 className="mt-1 font-display text-2xl font-semibold">Private room</h2>
+                <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-4">
+                  <h2 className="font-display text-2xl font-semibold">Private room</h2>
+                  <p className="font-display text-2xl font-semibold">
+                    ${property.privateRoom.price.toLocaleString("en-US")}
+                    <span className="text-base font-normal text-navy-100"> / month, all-inclusive</span>
+                  </p>
+                </div>
                 <p className="mt-2 text-navy-100">{property.privateRoom.summary}</p>
                 <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                   {property.privateRoom.features.map((f) => (
@@ -106,8 +112,8 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
                   ))}
                 </ul>
                 <div className="mt-6">
-                  <ButtonLink href={`/contact?property=${property.slug}&topic=availability`} variant="accent">
-                    Ask about the private room
+                  <ButtonLink href={`/refer?property=${property.slug}:private`} variant="accent">
+                    Refer a client for this room
                   </ButtonLink>
                 </div>
               </div>

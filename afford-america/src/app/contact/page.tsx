@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero, Section } from "@/components/ui";
-import { properties } from "@/content/properties";
+import { placementOptions } from "@/content/properties";
 import { site } from "@/content/site";
 import { ContactForm } from "./contact-form";
 
@@ -13,7 +13,7 @@ const TOPICS = new Set(["tour", "availability", "waitlist", "partnership", "othe
 
 export default async function ContactPage({ searchParams }: PageProps<"/contact">) {
   const { property, topic } = await searchParams;
-  const defaultProperty = typeof property === "string" && properties.some((p) => p.slug === property) ? property : undefined;
+  const defaultProperty = typeof property === "string" && placementOptions().some((o) => o.value === property) ? property : undefined;
   const defaultTopic = typeof topic === "string" && TOPICS.has(topic) ? topic : defaultProperty ? "tour" : undefined;
 
   return (
@@ -26,7 +26,7 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
           <ContactForm
             defaultProperty={defaultProperty}
             defaultTopic={defaultTopic}
-            propertyOptions={properties.map((p) => ({ value: p.slug, label: p.name }))}
+            propertyOptions={placementOptions()}
           />
           <aside className="h-fit space-y-6 rounded-3xl bg-navy-900 p-8 text-navy-100">
             <div>

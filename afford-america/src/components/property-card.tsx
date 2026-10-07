@@ -57,7 +57,7 @@ export function PropertyCard({ property }: { property: Property }) {
         />
         {property.privateRoom && (
           <span className="absolute left-3 top-3 rounded-full bg-sky px-3 py-1 text-xs font-semibold text-navy-900">
-            Private room available
+            Private room · ${property.privateRoom.price.toLocaleString("en-US")}/mo
           </span>
         )}
         {photoCount > 1 && (

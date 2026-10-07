@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { deliverSubmission } from "@/lib/submissions";
-import { properties } from "@/content/properties";
+import { placementName } from "@/content/properties";
 
 export type FormState = {
   status: "idle" | "success" | "error";
@@ -53,8 +53,7 @@ export async function submitReferral(_prev: FormState, formData: FormData): Prom
     };
   }
   const d = parsed.data;
-  const propertyName =
-    properties.find((p) => p.slug === d.preferredProperty)?.name ?? "No preference";
+  const propertyName = placementName(d.preferredProperty);
 
   try {
     await deliverSubmission({
@@ -117,8 +116,7 @@ export async function submitTourRequest(_prev: FormState, formData: FormData): P
     };
   }
   const d = parsed.data;
-  const propertyName =
-    properties.find((p) => p.slug === d.preferredProperty)?.name ?? "No preference";
+  const propertyName = placementName(d.preferredProperty);
 
   try {
     await deliverSubmission({

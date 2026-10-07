@@ -39,8 +39,8 @@ export type Property = {
   // Describes main.* for screen readers; set it when the main photo is not the exterior.
   mainPhotoAlt?: string;
   features: string[];
-  // A private room in addition to the shared bedrooms. Pricing is quoted on request.
-  privateRoom?: { summary: string; features: string[] };
+  // A private room separate from the shared beds (not counted in totalBeds).
+  privateRoom?: { price: number; summary: string; features: string[] };
   getAround: { kind: GetAroundKind; title: string; detail: string }[];
 };
 
@@ -103,6 +103,7 @@ export const properties: Property[] = [
     bathrooms: 2,
     mainPhotoAlt: "Kitchen with a marble island, bar seating, and stainless steel appliances",
     privateRoom: {
+      price: 1800,
       summary:
         "One private room sits in the home's duplex side, with its own entrance and bathroom, for a resident who needs their own space.",
       features: [
@@ -184,6 +185,27 @@ export function getProperty(slug: string) {
 
 export function displayAddress(p: Property) {
   return SHOW_HOUSE_NUMBERS ? p.address : p.streetName;
+}
+
+// Choices for the "preferred property" field: each home, plus its private room.
+const PRIVATE_SUFFIX = ":private";
+
+export function placementOptions(withAvailability = false) {
+  return properties.flatMap((p) => {
+    const beds = p.availableBeds === 0 ? "full, waitlist" : `${p.availableBeds} open`;
+    const options = [{ value: p.slug, label: withAvailability ? `${p.name}, shared room (${beds})` : `${p.name}, shared room` }];
+    if (p.privateRoom) {
+      options.push({
+        value: p.slug + PRIVATE_SUFFIX,
+        label: `${p.name}, private room ($${p.privateRoom.price.toLocaleString("en-US")}/mo)`,
+      });
+    }
+    return options;
+  });
+}
+
+export function placementName(value: string) {
+  return placementOptions().find((o) => o.value === value)?.label ?? "No preference";
 }
 
 export function totalAvailableBeds() {
