@@ -48,7 +48,7 @@ export default function PartnersPage() {
           across Metro Atlanta.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
-          <ButtonLink href="/refer">Submit a Referral</ButtonLink>
+          <ButtonLink href="/refer" variant="accent">Submit a Referral</ButtonLink>
           <ButtonLink href="/contact?topic=partnership" variant="light">
             Discuss a Referral Agreement
           </ButtonLink>
@@ -59,8 +59,8 @@ export default function PartnersPage() {
         <Eyebrow>Resident profile</Eyebrow>
         <H2>Who is a good fit</H2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <div className="rounded-2xl bg-white p-7 ring-1 ring-pine-100">
-            <h3 className="text-lg font-semibold text-pine-900">Good fit</h3>
+          <div className="rounded-2xl bg-white p-7 ring-1 ring-navy-100">
+            <h3 className="text-lg font-semibold text-navy-900">Good fit</h3>
             <ul className="mt-4 space-y-3">
               {residentCriteria.goodFit.map((c) => (
                 <li key={c} className="flex gap-2">
@@ -70,8 +70,8 @@ export default function PartnersPage() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl bg-white p-7 ring-1 ring-pine-100">
-            <h3 className="text-lg font-semibold text-pine-900">Better served elsewhere</h3>
+          <div className="rounded-2xl bg-white p-7 ring-1 ring-navy-100">
+            <h3 className="text-lg font-semibold text-navy-900">Better served elsewhere</h3>
             <ul className="mt-4 space-y-3">
               {residentCriteria.notAFit.map((c) => (
                 <li key={c} className="flex gap-2">
@@ -80,21 +80,21 @@ export default function PartnersPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-sm text-pine-700">
+            <p className="mt-5 text-sm text-navy-700">
               Not sure? Email us at {site.email}. We would rather talk it through than turn someone away on paper.
             </p>
           </div>
         </div>
       </Section>
 
-      <Section className="bg-sand/60">
+      <Section className="bg-frost/60">
         <Eyebrow>Programs we work with</Eyebrow>
         <H2>Referral pathways</H2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {audiences.map((a) => (
-            <div key={a.id} className="rounded-2xl bg-white p-7 ring-1 ring-pine-100">
-              <h3 className="font-display text-xl font-semibold text-pine-900">{a.title}</h3>
-              <p className="mt-2 text-sm text-pine-700">{a.who}</p>
+            <div key={a.id} className="rounded-2xl bg-white p-7 ring-1 ring-navy-100">
+              <h3 className="font-display text-xl font-semibold text-navy-900">{a.title}</h3>
+              <p className="mt-2 text-sm text-navy-700">{a.who}</p>
               <p className="mt-3">{a.detail}</p>
             </div>
           ))}
@@ -122,7 +122,7 @@ export default function PartnersPage() {
             <H2>Accepted payment sources</H2>
             <ul className="mt-6 flex flex-wrap gap-3">
               {fundingSources.map((f) => (
-                <li key={f} className="rounded-full bg-pine-50 px-5 py-2.5 font-medium text-pine-900 ring-1 ring-pine-200">
+                <li key={f} className="rounded-full bg-navy-50 px-5 py-2.5 font-medium text-navy-900 ring-1 ring-navy-200">
                   {f}
                 </li>
               ))}
@@ -131,16 +131,16 @@ export default function PartnersPage() {
         </div>
       </Section>
 
-      <Section className="bg-pine-50">
+      <Section className="bg-navy-50">
         <Eyebrow>Questions</Eyebrow>
         <H2>Frequently asked by case managers</H2>
-        <div className="mt-8 divide-y divide-pine-200 rounded-2xl bg-white ring-1 ring-pine-100">
+        <div className="mt-8 divide-y divide-navy-200 rounded-2xl bg-white ring-1 ring-navy-100">
           {faqs.map((f) => (
             <details key={f.q} className="group p-6">
-              <summary className="cursor-pointer list-none text-lg font-semibold text-pine-900">
+              <summary className="cursor-pointer list-none text-lg font-semibold text-navy-900">
                 <span className="flex items-center justify-between gap-4">
                   {f.q}
-                  <span aria-hidden className="text-2xl text-clay transition-transform group-open:rotate-45">
+                  <span aria-hidden className="text-2xl text-accent transition-transform group-open:rotate-45">
                     +
                   </span>
                 </span>

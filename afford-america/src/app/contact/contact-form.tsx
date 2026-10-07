@@ -20,15 +20,15 @@ export function ContactForm({
 
   if (state.status === "success") {
     return (
-      <div className="rounded-3xl bg-white p-10 text-center ring-1 ring-pine-100">
-        <h2 className="font-display text-3xl font-semibold text-pine-900">Message sent</h2>
+      <div className="rounded-3xl bg-white p-10 text-center ring-1 ring-navy-100">
+        <h2 className="font-display text-3xl font-semibold text-navy-900">Message sent</h2>
         <p className="mt-3 text-lg">{state.message ?? "Thank you."}</p>
       </div>
     );
   }
 
   return (
-    <form action={action} className="relative space-y-5 rounded-3xl bg-white p-6 ring-1 ring-pine-100 sm:p-10" noValidate>
+    <form action={action} className="relative space-y-5 rounded-3xl bg-white p-6 ring-1 ring-navy-100 sm:p-10" noValidate>
       <Honeypot />
       <FormStatus status={state.status} message={state.message} />
       <div className="grid gap-5 sm:grid-cols-2">
@@ -69,7 +69,7 @@ export function ContactForm({
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-full bg-clay px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-clay-dark disabled:opacity-60 sm:w-auto"
+        className="w-full rounded-full bg-navy-700 px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-navy-800 disabled:opacity-60 sm:w-auto"
       >
         {pending ? "Sending..." : "Send Request"}
       </button>

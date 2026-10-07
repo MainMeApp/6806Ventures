@@ -19,20 +19,20 @@ export function ReferralForm({
 
   if (state.status === "success") {
     return (
-      <div className="rounded-3xl bg-white p-10 text-center ring-1 ring-pine-100">
-        <h2 className="font-display text-3xl font-semibold text-pine-900">Thank you</h2>
+      <div className="rounded-3xl bg-white p-10 text-center ring-1 ring-navy-100">
+        <h2 className="font-display text-3xl font-semibold text-navy-900">Thank you</h2>
         <p className="mt-3 text-lg">{state.message ?? "Referral received."}</p>
       </div>
     );
   }
 
   return (
-    <form action={action} className="relative space-y-10 rounded-3xl bg-white p-6 ring-1 ring-pine-100 sm:p-10" noValidate>
+    <form action={action} className="relative space-y-10 rounded-3xl bg-white p-6 ring-1 ring-navy-100 sm:p-10" noValidate>
       <Honeypot />
       <FormStatus status={state.status} message={state.message} />
 
       <fieldset className="space-y-5">
-        <legend className="font-display text-2xl font-semibold text-pine-900">1. About you</legend>
+        <legend className="font-display text-2xl font-semibold text-navy-900">1. About you</legend>
         <div className="grid gap-5 sm:grid-cols-2">
           <TextField name="referrerName" label="Your name" required autoComplete="name" errors={e.referrerName} />
           <TextField name="referrerOrg" label="Organization" required autoComplete="organization" errors={e.referrerOrg} />
@@ -43,8 +43,8 @@ export function ReferralForm({
       </fieldset>
 
       <fieldset className="space-y-5">
-        <legend className="font-display text-2xl font-semibold text-pine-900">2. About the client</legend>
-        <p className="rounded-xl bg-sand/70 px-4 py-3 text-sm">
+        <legend className="font-display text-2xl font-semibold text-navy-900">2. About the client</legend>
+        <p className="rounded-xl bg-frost/70 px-4 py-3 text-sm">
           Please share initials only. Do not include full names, dates of birth, Social Security numbers, diagnoses, or
           medical records. We will collect what we need securely during the screening call.
         </p>
@@ -108,7 +108,7 @@ export function ReferralForm({
       </fieldset>
 
       <fieldset className="space-y-5">
-        <legend className="font-display text-2xl font-semibold text-pine-900">3. Placement</legend>
+        <legend className="font-display text-2xl font-semibold text-navy-900">3. Placement</legend>
         <SelectField
           name="preferredProperty"
           label="Preferred property"
@@ -125,12 +125,12 @@ export function ReferralForm({
           errors={e.notes}
         />
         <label className="flex items-start gap-3">
-          <input type="checkbox" name="consent" required className="mt-1.5 size-5 accent-pine-700" />
+          <input type="checkbox" name="consent" required className="mt-1.5 size-5 accent-navy-700" />
           <span>
             The client knows about and agrees to this housing referral, and I am authorized to share this information.
-            <span className="text-clay"> *</span>
+            <span className="text-alert"> *</span>
             {e.consent?.length ? (
-              <span className="block text-sm font-medium text-clay-dark">{e.consent[0]}</span>
+              <span className="block text-sm font-medium text-alert">{e.consent[0]}</span>
             ) : null}
           </span>
         </label>
@@ -139,7 +139,7 @@ export function ReferralForm({
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-full bg-clay px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-clay-dark disabled:opacity-60 sm:w-auto"
+        className="w-full rounded-full bg-navy-700 px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-navy-800 disabled:opacity-60 sm:w-auto"
       >
         {pending ? "Sending..." : "Submit Referral"}
       </button>

@@ -14,7 +14,7 @@ export function MobileNav({ items }: { items: { href: string; label: string }[] 
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen((o) => !o)}
-        className="rounded-md border border-pine-200 px-3 py-2 font-medium text-pine-900"
+        className="rounded-md border border-navy-200 px-3 py-2 font-medium text-navy-900"
       >
         {open ? "Close" : "Menu"}
       </button>
@@ -22,7 +22,7 @@ export function MobileNav({ items }: { items: { href: string; label: string }[] 
         <nav
           id="mobile-menu"
           aria-label="Mobile"
-          className="absolute inset-x-0 top-full border-b border-pine-100 bg-cream px-4 pb-6 pt-2 shadow-lg"
+          className="absolute inset-x-0 top-full border-b border-navy-100 bg-mist px-4 pb-6 pt-2 shadow-lg"
         >
           <ul className="flex flex-col">
             {items.map((item) => (
@@ -36,7 +36,7 @@ export function MobileNav({ items }: { items: { href: string; label: string }[] 
           <Link
             href="/refer"
             onClick={close}
-            className="mt-3 block rounded-full bg-clay px-5 py-3 text-center font-semibold text-white"
+            className="mt-3 block rounded-full bg-navy-700 px-5 py-3 text-center font-semibold text-white"
           >
             Make a Referral
           </Link>

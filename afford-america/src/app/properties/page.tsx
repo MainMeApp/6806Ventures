@@ -24,7 +24,7 @@ export default function PropertiesPage() {
             <PropertyCard key={p.slug} property={p} />
           ))}
         </div>
-        <p className="mt-10 text-sm text-pine-700">
+        <p className="mt-10 text-sm text-navy-700">
           Availability as of {formatAvailabilityDate()}. Call or send a referral to confirm a bed before discussing it
           with a client. When a home is full, ask to join its waitlist.
         </p>

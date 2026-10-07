@@ -31,21 +31,21 @@ export default function LivingHerePage() {
         <H2>Everything in the ${monthlyPackage.price.toLocaleString("en-US")} monthly package</H2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {monthlyPackage.includes.map((i) => (
-            <div key={i.title} className="rounded-2xl bg-white p-7 ring-1 ring-pine-100">
-              <h3 className="text-lg font-semibold text-pine-900">{i.title}</h3>
+            <div key={i.title} className="rounded-2xl bg-white p-7 ring-1 ring-navy-100">
+              <h3 className="text-lg font-semibold text-navy-900">{i.title}</h3>
               <p className="mt-2">{i.detail}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      <Section className="bg-sand/60">
+      <Section className="bg-frost/60">
         <Eyebrow>The rhythm of the home</Eyebrow>
         <H2>What to expect</H2>
         <dl className="mt-8 grid gap-6 md:grid-cols-2">
           {rhythm.map(([when, what]) => (
-            <div key={when} className="flex gap-5 rounded-2xl bg-white p-6 ring-1 ring-pine-100">
-              <dt className="w-36 shrink-0 font-display text-xl font-semibold text-clay">{when}</dt>
+            <div key={when} className="flex gap-5 rounded-2xl bg-white p-6 ring-1 ring-navy-100">
+              <dt className="w-36 shrink-0 font-display text-xl font-semibold text-accent">{when}</dt>
               <dd>{what}</dd>
             </div>
           ))}
@@ -67,7 +67,7 @@ export default function LivingHerePage() {
               ))}
             </ul>
           </div>
-          <div className="rounded-3xl bg-pine-900 p-8 text-pine-100">
+          <div className="rounded-3xl bg-navy-900 p-8 text-navy-100">
             <h2 className="font-display text-2xl font-semibold text-white">An important note on care</h2>
             <p className="mt-4">{notProvided}</p>
             <div className="mt-8">

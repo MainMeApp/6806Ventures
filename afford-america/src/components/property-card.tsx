@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { LOW_AVAILABILITY, type Property } from "@/content/properties";
+import { displayAddress, LOW_AVAILABILITY, type Property } from "@/content/properties";
 import { getMainImage } from "@/lib/property-images";
 import { PropertyPhoto } from "./property-photo";
 
 export function AvailabilityBadge({ available }: { available: number }) {
   const full = available === 0;
   const low = !full && available <= LOW_AVAILABILITY;
-  const tone = full ? "bg-sand text-ink" : low ? "bg-clay text-white" : "bg-pine-100 text-pine-800";
-  const dot = full ? "bg-clay" : low ? "bg-white" : "bg-pine-600";
+  const tone = full ? "bg-frost text-ink" : low ? "bg-navy-800 text-white" : "bg-navy-100 text-navy-800";
+  const dot = full ? "bg-accent" : low ? "bg-sky" : "bg-navy-600";
   const label = full
     ? "Full · waitlist open"
     : low
@@ -31,12 +31,12 @@ export function OccupancyBar({ total, available, onDark = false }: { total: numb
           <span
             key={i}
             className={`h-2 flex-1 rounded-full ${
-              i < occupied ? (onDark ? "bg-pine-200" : "bg-pine-700") : "bg-clay"
+              i < occupied ? (onDark ? "bg-navy-200" : "bg-navy-700") : "bg-sky"
             }`}
           />
         ))}
       </div>
-      <p className={`mt-1.5 text-sm ${onDark ? "text-pine-100" : "text-pine-700"}`}>
+      <p className={`mt-1.5 text-sm ${onDark ? "text-navy-100" : "text-navy-700"}`}>
         {available === 0 ? `All ${total} beds taken` : `${available} of ${total} beds open`}
       </p>
     </div>
@@ -45,38 +45,38 @@ export function OccupancyBar({ total, available, onDark = false }: { total: numb
 
 export function PropertyCard({ property }: { property: Property }) {
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-pine-100 transition-shadow hover:shadow-md">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-navy-100 transition-shadow hover:shadow-md">
       <PropertyPhoto
         src={getMainImage(property.slug)}
-        alt={`${property.name} exterior`}
+        alt={`Front of ${property.name}, ${property.streetName}`}
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         className="aspect-4/3"
       />
       <div className="flex flex-1 flex-col p-6">
         <AvailabilityBadge available={property.availableBeds} />
-        <h3 className="mt-3 font-display text-2xl font-semibold text-pine-900">
+        <h3 className="mt-3 font-display text-2xl font-semibold text-navy-900">
           <Link href={`/properties/${property.slug}`} className="after:absolute after:inset-0 focus:outline-none">
             {property.name}
           </Link>
         </h3>
-        <p className="text-sm text-pine-700">
-          {property.neighborhood}, Atlanta {property.zip}
+        <p className="text-sm text-navy-700">
+          {displayAddress(property)} · {property.neighborhood}
         </p>
         <p className="mt-3 flex-1 text-base">{property.summary}</p>
         <div className="mt-5">
           <OccupancyBar total={property.totalBeds} available={property.availableBeds} />
         </div>
-        <dl className="mt-5 grid grid-cols-3 gap-2 border-t border-pine-100 pt-4 text-center text-sm">
+        <dl className="mt-5 grid grid-cols-3 gap-2 border-t border-navy-100 pt-4 text-center text-sm">
           <div>
-            <dt className="text-pine-700">Beds</dt>
+            <dt className="text-navy-700">Beds</dt>
             <dd className="font-semibold">{property.totalBeds}</dd>
           </div>
           <div>
-            <dt className="text-pine-700">Bedrooms</dt>
+            <dt className="text-navy-700">Bedrooms</dt>
             <dd className="font-semibold">{property.bedrooms}</dd>
           </div>
           <div>
-            <dt className="text-pine-700">Baths</dt>
+            <dt className="text-navy-700">Baths</dt>
             <dd className="font-semibold">{property.bathrooms}</dd>
           </div>
         </dl>

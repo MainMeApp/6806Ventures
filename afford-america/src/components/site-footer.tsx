@@ -4,7 +4,7 @@ import { navItems } from "./site-header";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-pine-900 px-4 py-14 text-pine-100 sm:px-6">
+    <footer className="bg-navy-900 px-4 py-14 text-navy-100 sm:px-6">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
         <div>
           <p className="font-display text-xl font-semibold text-white">{site.brand}</p>
@@ -35,7 +35,7 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="mx-auto mt-12 max-w-6xl space-y-3 border-t border-pine-700 pt-6 text-xs text-pine-200">
+      <div className="mx-auto mt-12 max-w-6xl space-y-3 border-t border-navy-700 pt-6 text-xs text-navy-200">
         <p>{notProvided}</p>
         <p className="flex items-center gap-2">
           <EqualHousingIcon />

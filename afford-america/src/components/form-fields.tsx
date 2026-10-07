@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 const inputClass =
-  "mt-1.5 block w-full rounded-lg border border-pine-200 bg-white px-3.5 py-2.5 text-base text-ink shadow-xs placeholder:text-pine-700/50 focus:border-pine-600 focus:outline-none focus:ring-2 focus:ring-pine-200 aria-invalid:border-clay";
+  "mt-1.5 block w-full rounded-lg border border-navy-200 bg-white px-3.5 py-2.5 text-base text-ink shadow-xs placeholder:text-navy-700/50 focus:border-navy-600 focus:outline-none focus:ring-2 focus:ring-navy-200 aria-invalid:border-alert";
 
 type BaseProps = {
   name: string;
@@ -15,18 +15,18 @@ type BaseProps = {
 function FieldShell({ name, label, hint, required, errors, className = "", children }: BaseProps & { children: ReactNode }) {
   return (
     <div className={className}>
-      <label htmlFor={name} className="block font-semibold text-pine-900">
+      <label htmlFor={name} className="block font-semibold text-navy-900">
         {label}
-        {required && <span className="text-clay"> *</span>}
+        {required && <span className="text-alert"> *</span>}
       </label>
       {hint && (
-        <p id={`${name}-hint`} className="text-sm text-pine-700">
+        <p id={`${name}-hint`} className="text-sm text-navy-700">
           {hint}
         </p>
       )}
       {children}
       {errors?.length ? (
-        <p id={`${name}-error`} className="mt-1 text-sm font-medium text-clay-dark">
+        <p id={`${name}-error`} className="mt-1 text-sm font-medium text-alert">
           {errors[0]}
         </p>
       ) : null}
@@ -113,12 +113,12 @@ export function YesNoField(props: BaseProps & { defaultValue?: string }) {
   ];
   return (
     <fieldset className={props.className} aria-describedby={describedBy(props)}>
-      <legend className="font-semibold text-pine-900">
+      <legend className="font-semibold text-navy-900">
         {props.label}
-        {props.required && <span className="text-clay"> *</span>}
+        {props.required && <span className="text-alert"> *</span>}
       </legend>
       {props.hint && (
-        <p id={`${props.name}-hint`} className="text-sm text-pine-700">
+        <p id={`${props.name}-hint`} className="text-sm text-navy-700">
           {props.hint}
         </p>
       )}
@@ -126,7 +126,7 @@ export function YesNoField(props: BaseProps & { defaultValue?: string }) {
         {options.map((o) => (
           <label
             key={o.value}
-            className="flex cursor-pointer items-center gap-2 rounded-lg border border-pine-200 bg-white px-4 py-2 has-checked:border-pine-600 has-checked:bg-pine-50"
+            className="flex cursor-pointer items-center gap-2 rounded-lg border border-navy-200 bg-white px-4 py-2 has-checked:border-navy-600 has-checked:bg-navy-50"
           >
             <input
               type="radio"
@@ -134,14 +134,14 @@ export function YesNoField(props: BaseProps & { defaultValue?: string }) {
               value={o.value}
               required={props.required}
               defaultChecked={props.defaultValue === o.value}
-              className="accent-pine-700"
+              className="accent-navy-700"
             />
             {o.label}
           </label>
         ))}
       </div>
       {props.errors?.length ? (
-        <p id={`${props.name}-error`} className="mt-1 text-sm font-medium text-clay-dark">
+        <p id={`${props.name}-error`} className="mt-1 text-sm font-medium text-alert">
           {props.errors[0]}
         </p>
       ) : null}
@@ -167,7 +167,7 @@ export function FormStatus({ status, message }: { status: string; message?: stri
   return (
     <div
       role={ok ? "status" : "alert"}
-      className={`rounded-xl px-5 py-4 font-medium ${ok ? "bg-pine-100 text-pine-900" : "bg-sand text-clay-dark"}`}
+      className={`rounded-xl px-5 py-4 font-medium ${ok ? "bg-navy-100 text-navy-900" : "bg-red-50 text-alert"}`}
     >
       {message}
     </div>

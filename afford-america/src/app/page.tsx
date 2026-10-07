@@ -1,7 +1,8 @@
 import { ButtonLink, Check, Eyebrow, H2, Section } from "@/components/ui";
 import { PropertyCard } from "@/components/property-card";
 import { audiences, fundingRequirement, fundingSources, monthlyPackage, site } from "@/content/site";
-import { formatAvailabilityDate, properties, totalAvailableBeds, totalBeds } from "@/content/properties";
+import { areaHighlights, formatAvailabilityDate, properties, totalAvailableBeds, totalBeds } from "@/content/properties";
+import { GetAroundList } from "@/components/get-around";
 
 export default function Home() {
   const available = totalAvailableBeds();
@@ -10,22 +11,22 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <div className="relative overflow-hidden bg-pine-900 px-4 text-white sm:px-6">
-        <div aria-hidden className="absolute -right-32 -top-32 size-[28rem] rounded-full bg-pine-700/50 blur-3xl" />
+      <div className="relative overflow-hidden bg-navy-900 px-4 text-white sm:px-6">
+        <div aria-hidden className="absolute -right-32 -top-32 size-[28rem] rounded-full bg-navy-700/50 blur-3xl" />
         <div className="relative mx-auto grid max-w-6xl gap-12 py-20 sm:py-28 lg:grid-cols-[1.4fr_1fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-pine-200">
+            <p className="text-sm font-semibold uppercase tracking-widest text-navy-200">
               West Atlanta &middot; 30314
             </p>
             <h1 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-6xl">
               A stable, furnished home. One simple monthly price.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-pine-100 sm:text-xl">
+            <p className="mt-6 max-w-xl text-lg text-navy-100 sm:text-xl">
               {site.brand} offers all-inclusive, non-clinical supportive independent living for adults 55+,
               veterans, and independent adults who thrive in a structured home.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
-              <ButtonLink href="/refer">Make a Referral</ButtonLink>
+              <ButtonLink href="/refer" variant="accent">Make a Referral</ButtonLink>
               <ButtonLink href="/contact" variant="light">
                 Schedule a Tour
               </ButtonLink>
@@ -33,12 +34,12 @@ export default function Home() {
           </div>
 
           <div className="rounded-3xl bg-white p-8 text-ink shadow-xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-clay">{monthlyPackage.label}</p>
-            <p className="mt-2 font-display text-5xl font-semibold text-pine-900">
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent">{monthlyPackage.label}</p>
+            <p className="mt-2 font-display text-5xl font-semibold text-navy-900">
               ${monthlyPackage.price.toLocaleString("en-US")}
-              <span className="text-lg font-normal text-pine-700"> / month</span>
+              <span className="text-lg font-normal text-navy-700"> / month</span>
             </p>
-            <p className="mt-1 text-sm text-pine-700">{monthlyPackage.occupancy}</p>
+            <p className="mt-1 text-sm text-navy-700">{monthlyPackage.occupancy}</p>
             <ul className="mt-6 space-y-2">
               {monthlyPackage.includes.map((item) => (
                 <li key={item.title} className="flex gap-2">
@@ -47,13 +48,13 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <div className="mt-6 rounded-xl bg-pine-50 px-4 py-3">
-              <p className="font-semibold text-pine-900">
+            <div className="mt-6 rounded-xl bg-navy-50 px-4 py-3">
+              <p className="font-semibold text-navy-900">
                 {available === 0
                   ? "All homes are full right now. Join the waitlist."
                   : `Only ${available} of ${total} beds open`}
               </p>
-              <p className="text-sm text-pine-700">Availability as of {formatAvailabilityDate()}</p>
+              <p className="text-sm text-navy-700">Availability as of {formatAvailabilityDate()}</p>
             </div>
           </div>
         </div>
@@ -69,10 +70,10 @@ export default function Home() {
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {audiences.map((a) => (
-            <div key={a.id} className="rounded-2xl bg-white p-7 ring-1 ring-pine-100">
-              <h3 className="font-display text-2xl font-semibold text-pine-900">{a.title}</h3>
+            <div key={a.id} className="rounded-2xl bg-white p-7 ring-1 ring-navy-100">
+              <h3 className="font-display text-2xl font-semibold text-navy-900">{a.title}</h3>
               <p className="mt-2">{a.detail}</p>
-              <p className="mt-4 text-sm text-pine-700">
+              <p className="mt-4 text-sm text-navy-700">
                 <span className="font-semibold">Referred by: </span>
                 {a.who}
               </p>
@@ -82,11 +83,11 @@ export default function Home() {
       </Section>
 
       {/* Properties */}
-      <Section className="bg-sand/60">
+      <Section className="bg-frost/60">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <Eyebrow>Our homes</Eyebrow>
-            <H2>Renovated homes in West Atlanta</H2>
+            <H2>Three homes in Hunter Hills and Mozley Park</H2>
           </div>
           <ButtonLink href="/properties" variant="secondary">
             View all properties
@@ -96,6 +97,21 @@ export default function Home() {
           {properties.map((p) => (
             <PropertyCard key={p.slug} property={p} />
           ))}
+        </div>
+      </Section>
+
+      {/* Location */}
+      <Section className="bg-white">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:items-start">
+          <div>
+            <Eyebrow>The neighborhood</Eyebrow>
+            <H2>Connected to the Westside, the BeltLine, and MARTA</H2>
+            <p className="mt-4 text-lg">
+              Our homes sit in Hunter Hills and Mozley Park, two historic West Atlanta neighborhoods about three miles
+              from Downtown. Residents can get to appointments, services, and family across the city without a car.
+            </p>
+          </div>
+          <GetAroundList items={areaHighlights} />
         </div>
       </Section>
 
@@ -110,11 +126,11 @@ export default function Home() {
             ["Tour the home", "In person or by video, with the client, their case manager, or both."],
             ["Move in", "The room is furnished and utilities are on. The resident brings personal clothing."],
           ].map(([title, body], i) => (
-            <li key={title} className="rounded-2xl bg-white p-6 ring-1 ring-pine-100">
-              <span className="grid size-10 place-items-center rounded-full bg-pine-700 font-display text-lg font-semibold text-white">
+            <li key={title} className="rounded-2xl bg-white p-6 ring-1 ring-navy-100">
+              <span className="grid size-10 place-items-center rounded-full bg-navy-700 font-display text-lg font-semibold text-white">
                 {i + 1}
               </span>
-              <h3 className="mt-4 text-lg font-semibold text-pine-900">{title}</h3>
+              <h3 className="mt-4 text-lg font-semibold text-navy-900">{title}</h3>
               <p className="mt-1 text-base">{body}</p>
             </li>
           ))}
@@ -122,7 +138,7 @@ export default function Home() {
       </Section>
 
       {/* Funding */}
-      <Section className="bg-pine-50">
+      <Section className="bg-navy-50">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <Eyebrow>Funding accepted</Eyebrow>
@@ -134,7 +150,7 @@ export default function Home() {
           </div>
           <ul className="flex flex-wrap gap-3">
             {fundingSources.map((f) => (
-              <li key={f} className="rounded-full bg-white px-5 py-2.5 font-medium text-pine-900 ring-1 ring-pine-200">
+              <li key={f} className="rounded-full bg-white px-5 py-2.5 font-medium text-navy-900 ring-1 ring-navy-200">
                 {f}
               </li>
             ))}
@@ -144,7 +160,7 @@ export default function Home() {
 
       {/* CTA */}
       <Section>
-        <div className="rounded-3xl bg-clay px-8 py-12 text-white sm:px-12">
+        <div className="rounded-3xl bg-navy-800 px-8 py-12 text-white sm:px-12">
           <h2 className="font-display text-3xl font-semibold sm:text-4xl">Have a client who needs housing now?</h2>
           <p className="mt-3 max-w-2xl text-lg text-white/90">
             Send a referral in about three minutes, or email {site.email} to reach a placement coordinator.

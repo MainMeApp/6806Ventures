@@ -2,25 +2,34 @@
 // named main.jpg (or .jpeg, .png, .webp). Any other images in that folder
 // show up as a gallery on the property page. See README for details.
 //
-// TODO: every entry below is a placeholder. Replace names, streets, bed
-// counts, and features with the real portfolio before launch.
+// TODO: bed counts, bedrooms, and bathrooms below are still placeholders.
 //
 // Keep availableBeds accurate: the "only N left" and waitlist messaging is
 // driven by it, and overstating scarcity costs referral partners' trust.
+//
+// Location facts in `getAround` were checked against the Atlanta BeltLine,
+// PATH Foundation, MARTA, and neighborhood sources. Keep them factual; do not
+// add walking times without measuring them.
 
 // Update this date whenever availableBeds changes (YYYY-MM-DD).
-export const availabilityUpdated = "2026-10-02";
+export const availabilityUpdated = "2026-10-07";
 
 // At or below this many open beds, a home is flagged as nearly full.
 export const LOW_AVAILABILITY = 2;
 
+// Residents of supportive housing can be targets; by default the public site
+// shows the street and neighborhood, and the house number is shared once a
+// referral or tour is confirmed. Set to true to publish full addresses.
+export const SHOW_HOUSE_NUMBERS = false;
+
+export type GetAroundKind = "rail" | "bus" | "trail" | "park";
+
 export type Property = {
   slug: string;
   name: string;
-  // Keep the exact street address off the public site until a tour is booked
-  // if residents' privacy calls for it; the neighborhood alone is fine.
+  address: string;
+  streetName: string;
   neighborhood: string;
-  street?: string;
   zip: string;
   totalBeds: number;
   availableBeds: number;
@@ -28,56 +37,137 @@ export type Property = {
   bathrooms: number;
   summary: string;
   features: string[];
-  nearby: string[];
+  getAround: { kind: GetAroundKind; title: string; detail: string }[];
 };
+
+const sharedFeatures = [
+  "Fully furnished shared bedrooms",
+  "All utilities and Wi-Fi included",
+  "TV access and personal headphones",
+  "Daily sanitizing by the house host",
+  "Professional cleaning every two weeks",
+];
 
 export const properties: Property[] = [
   {
-    slug: "residence-one",
-    name: "West Atlanta Residence I",
-    neighborhood: "West Atlanta",
+    slug: "sharon-street",
+    name: "Sharon Street House",
+    address: "1370 Sharon St NW",
+    streetName: "Sharon St NW",
+    neighborhood: "Hunter Hills",
     zip: "30314",
     totalBeds: 6,
     availableBeds: 2,
     bedrooms: 3,
     bathrooms: 2,
     summary:
-      "A renovated single-family home with three shared bedrooms, an open kitchen, and a covered front porch.",
-    features: ["Fully furnished", "Renovated kitchen", "Washer and dryer", "Front porch seating", "Smoke-free home"],
-    nearby: ["MARTA bus stops within walking distance", "Grocery and pharmacy nearby", "Short ride to Downtown care providers"],
+      "A home in Hunter Hills, a historic, tree-lined neighborhood between Joseph E. Boone Boulevard and Martin Luther King Jr. Drive, with Washington Park and the BeltLine on its eastern edge.",
+    features: sharedFeatures,
+    getAround: [
+      {
+        kind: "rail",
+        title: "MARTA rail",
+        detail: "Ashby, West Lake, and Bankhead stations serve Hunter Hills, with direct trains to Downtown and Midtown.",
+      },
+      {
+        kind: "bus",
+        title: "MARTA buses",
+        detail: "Route 51 runs along Joseph E. Boone Blvd, Route 3 along Martin Luther King Jr. Dr, and Route 853 serves the neighborhood.",
+      },
+      {
+        kind: "trail",
+        title: "Atlanta BeltLine",
+        detail: "The Westside Trail runs along the neighborhood's eastern edge at Washington Park.",
+      },
+      {
+        kind: "park",
+        title: "Parks and trails",
+        detail: "The Lionel Hampton Trail runs through Hunter Hills, linking Washington Park and Mozley Park.",
+      },
+    ],
   },
   {
-    slug: "residence-two",
-    name: "West Atlanta Residence II",
-    neighborhood: "West Atlanta",
+    slug: "chappell-road",
+    name: "Chappell Road House",
+    address: "64 Chappell Rd NW",
+    streetName: "Chappell Rd NW",
+    neighborhood: "Hunter Hills",
     zip: "30314",
     totalBeds: 6,
     availableBeds: 1,
     bedrooms: 3,
     bathrooms: 2,
     summary:
-      "A bright, single-level home with step-free entry, a shared living room, and a fenced backyard.",
-    features: ["Fully furnished", "Single-level living", "Step-free entry", "Fenced backyard", "Smoke-free home"],
-    nearby: ["MARTA rail access by bus", "Community park nearby", "Close to outpatient clinics"],
+      "A home just north of Martin Luther King Jr. Drive, where Hunter Hills meets Mozley Park and West Lake, close to the West Lake MARTA station and the BeltLine's Westside Trail.",
+    features: sharedFeatures,
+    getAround: [
+      {
+        kind: "rail",
+        title: "MARTA rail",
+        detail: "West Lake station on the Blue Line is the closest rail stop, with direct trains to Downtown.",
+      },
+      {
+        kind: "bus",
+        title: "MARTA buses",
+        detail: "Route 3 runs along Martin Luther King Jr. Dr to Five Points, and Route 51 runs along Joseph E. Boone Blvd.",
+      },
+      {
+        kind: "trail",
+        title: "Atlanta BeltLine",
+        detail: "The Westside Trail, which ends at West Lake station, is a short trip east through Mozley Park.",
+      },
+      {
+        kind: "park",
+        title: "Parks and trails",
+        detail: "Mozley Park's recreation center, pool, and playing courts are nearby, joined to Washington Park by the Lionel Hampton Trail.",
+      },
+    ],
   },
   {
-    slug: "residence-three",
-    name: "West Atlanta Residence III",
-    neighborhood: "West Atlanta",
+    slug: "chicamauga-avenue",
+    name: "Chicamauga Avenue House",
+    address: "223 Chicamauga Ave SW",
+    streetName: "Chicamauga Ave SW",
+    neighborhood: "Mozley Park",
     zip: "30314",
     totalBeds: 4,
     availableBeds: 0,
     bedrooms: 2,
     bathrooms: 1,
     summary:
-      "A quiet, smaller home suited to residents who prefer a calmer household with fewer housemates.",
-    features: ["Fully furnished", "Quiet street", "Shared dining area", "Off-street parking", "Smoke-free home"],
-    nearby: ["MARTA bus stops within walking distance", "Corner market nearby", "Short ride to Grady Memorial"],
+      "A home in Chicamauga Heights, a historic pocket of Mozley Park, a few houses from an entrance to the BeltLine's Westside Trail.",
+    features: sharedFeatures,
+    getAround: [
+      {
+        kind: "trail",
+        title: "Atlanta BeltLine",
+        detail: "A Westside Trail entrance is a few houses away. Mozley Park has four direct entrances to the trail.",
+      },
+      {
+        kind: "rail",
+        title: "MARTA rail",
+        detail: "West Lake station is the closest rail stop, and the Westside Trail leads to both West Lake and Ashby stations.",
+      },
+      {
+        kind: "bus",
+        title: "MARTA buses",
+        detail: "Route 3 runs along Martin Luther King Jr. Dr, the neighborhood's northern edge, to Five Points.",
+      },
+      {
+        kind: "park",
+        title: "Mozley Park",
+        detail: "A recreation center, public pool, dog park, playgrounds, and tennis and basketball courts.",
+      },
+    ],
   },
 ];
 
 export function getProperty(slug: string) {
   return properties.find((p) => p.slug === slug);
+}
+
+export function displayAddress(p: Property) {
+  return SHOW_HOUSE_NUMBERS ? p.address : p.streetName;
 }
 
 export function totalAvailableBeds() {
@@ -95,3 +185,27 @@ export function formatAvailabilityDate() {
     year: "numeric",
   });
 }
+
+// Neighborhood-wide highlights for the home page.
+export const areaHighlights: { kind: GetAroundKind; title: string; detail: string }[] = [
+  {
+    kind: "rail",
+    title: "MARTA rail",
+    detail: "Ashby, West Lake, and Bankhead stations connect the neighborhood to Downtown and Midtown, with transfers to the rest of the MARTA system.",
+  },
+  {
+    kind: "bus",
+    title: "MARTA buses",
+    detail: "Routes 3, 51, and 853 run along Martin Luther King Jr. Dr, Joseph E. Boone Blvd, and through Hunter Hills.",
+  },
+  {
+    kind: "trail",
+    title: "Atlanta BeltLine",
+    detail: "The 2.7-mile Westside Trail runs from Ashby station to West Lake station, right past our homes.",
+  },
+  {
+    kind: "park",
+    title: "Parks",
+    detail: "Mozley Park and Washington Park, linked by the Lionel Hampton Trail. Downtown is about three miles east.",
+  },
+];

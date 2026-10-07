@@ -28,7 +28,7 @@ npm run lint
 
 ## Adding property photos
 
-1. Put photos in `public/properties/<slug>/`, e.g. `public/properties/residence-one/`.
+1. Put photos in `public/properties/<slug>/`, e.g. `public/properties/sharon-street/`. The slugs are `sharon-street`, `chappell-road`, and `chicamauga-avenue`.
 2. Name the main photo `main.jpg` (`.jpeg`, `.png`, `.webp`, `.avif` also work). It is used on the cards and as the hero on the property page.
 3. Any other images in the same folder appear as a gallery on that property's page, sorted by filename.
 4. Rebuild or redeploy. Until a photo exists, a "Photo coming soon" placeholder is shown.
@@ -40,7 +40,7 @@ Landscape photos around 1600px wide work best. Next.js resizes and compresses th
 - Business details, package, funding sources, resident criteria: `src/content/site.ts`
 - Properties (names, beds available, features): `src/content/properties.ts`
 
-`properties.ts` marks placeholders with `TODO`; every property entry is a placeholder today. The site has no phone number by design; all contact goes to the email in `site.ts`.
+`properties.ts` holds the three real homes. Bed, bedroom, and bathroom counts are still placeholders (marked `TODO`). House numbers are hidden on the public site unless `SHOW_HOUSE_NUMBERS` is set to `true`. The site has no phone number by design; all contact goes to the email in `site.ts`.
 
 ## Form submissions
 
