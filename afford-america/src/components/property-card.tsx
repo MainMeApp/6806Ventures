@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { displayAddress, LOW_AVAILABILITY, type Property } from "@/content/properties";
-import { getMainImage } from "@/lib/property-images";
+import { getMainImage, mainImageAlt } from "@/lib/property-images";
 import { PropertyPhoto } from "./property-photo";
 
 export function AvailabilityBadge({ available }: { available: number }) {
@@ -44,11 +44,12 @@ export function OccupancyBar({ total, available, onDark = false }: { total: numb
 }
 
 export function PropertyCard({ property }: { property: Property }) {
+  const main = getMainImage(property.slug);
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-navy-100 transition-shadow hover:shadow-md">
       <PropertyPhoto
-        src={getMainImage(property.slug)}
-        alt={`Front of ${property.name}, ${property.streetName}`}
+        src={main}
+        alt={mainImageAlt(main, property.name, property.mainPhotoAlt)}
         sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
         className="aspect-4/3"
       />

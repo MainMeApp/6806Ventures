@@ -36,6 +36,8 @@ export type Property = {
   bedrooms: number;
   bathrooms: number;
   summary: string;
+  // Describes main.* for screen readers; set it when the main photo is not the exterior.
+  mainPhotoAlt?: string;
   features: string[];
   getAround: { kind: GetAroundKind; title: string; detail: string }[];
 };
@@ -97,6 +99,7 @@ export const properties: Property[] = [
     availableBeds: 1,
     bedrooms: 3,
     bathrooms: 2,
+    mainPhotoAlt: "Kitchen with a marble island, bar seating, and stainless steel appliances",
     summary:
       "A home just north of Martin Luther King Jr. Drive, where Hunter Hills meets Mozley Park and West Lake, close to the West Lake MARTA station and the BeltLine's Westside Trail.",
     features: sharedFeatures,

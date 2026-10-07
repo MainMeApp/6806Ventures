@@ -7,7 +7,7 @@ import { PropertyPhoto } from "@/components/property-photo";
 import { displayAddress, formatAvailabilityDate, getProperty, properties } from "@/content/properties";
 import { GetAroundList } from "@/components/get-around";
 import { monthlyPackage, notProvided } from "@/content/site";
-import { getGalleryImages, getMainImage } from "@/lib/property-images";
+import { getGalleryImages, getMainImage, mainImageAlt, photoLabel } from "@/lib/property-images";
 
 export const dynamicParams = false;
 
@@ -44,10 +44,10 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
           </Link>
           <PropertyPhoto
             src={main}
-            alt={`Front of ${property.name}, ${property.streetName}`}
+            alt={mainImageAlt(main, property.name, property.mainPhotoAlt)}
             sizes="(min-width: 1152px) 1152px, 100vw"
             preload
-            className="mt-4 aspect-video rounded-3xl sm:aspect-[21/9]"
+            className="mt-4 aspect-4/3 rounded-3xl sm:aspect-[2/1]"
           />
         </div>
       </div>
@@ -76,6 +76,23 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
               ))}
             </dl>
 
+            {gallery.length > 0 && (
+              <div className="mt-10">
+                <h2 className="font-display text-2xl font-semibold text-navy-900">Photos</h2>
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  {gallery.map((src) => (
+                    <PropertyPhoto
+                      key={src}
+                      src={src}
+                      alt={`${property.name}: ${photoLabel(src)}`}
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                      className="aspect-4/3 rounded-xl"
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="mt-10">
               <h2 className="font-display text-2xl font-semibold text-navy-900">Getting around</h2>
               <p className="mt-1 text-navy-700">Transit, trails, and parks near {property.streetName}.</p>
@@ -96,22 +113,6 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
               </ul>
             </div>
 
-            {gallery.length > 0 && (
-              <div className="mt-12">
-                <h2 className="font-display text-2xl font-semibold text-navy-900">Photos</h2>
-                <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
-                  {gallery.map((src, i) => (
-                    <PropertyPhoto
-                      key={src}
-                      src={src}
-                      alt={`${property.name} photo ${i + 2}`}
-                      sizes="(min-width: 768px) 33vw, 50vw"
-                      className="aspect-4/3 rounded-xl"
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
 
           <aside className="h-fit rounded-3xl bg-white p-7 ring-1 ring-navy-100 lg:sticky lg:top-24">
