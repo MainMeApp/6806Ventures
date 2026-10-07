@@ -14,8 +14,8 @@ export default function PropertiesPage() {
       <PageHero eyebrow="Properties & availability" title="Furnished homes in West Atlanta">
         <p>
           Only {totalAvailableBeds()} of {totalBeds()} beds are open across our {properties.length} homes. Each home is
-          small by design, so openings are limited. Every bedroom is shared by two residents, fully furnished, and
-          covered by the same all-inclusive monthly package.
+          small by design, so openings are limited. Bedrooms are shared by two residents and fully furnished,
+          and Chappell Road also has a private room with its own entrance and bathroom.
         </p>
       </PageHero>
       <Section>

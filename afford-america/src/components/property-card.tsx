@@ -55,6 +55,11 @@ export function PropertyCard({ property }: { property: Property }) {
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           className="aspect-4/3"
         />
+        {property.privateRoom && (
+          <span className="absolute left-3 top-3 rounded-full bg-sky px-3 py-1 text-xs font-semibold text-navy-900">
+            Private room available
+          </span>
+        )}
         {photoCount > 1 && (
           <span className="absolute bottom-3 right-3 rounded-full bg-navy-900/80 px-3 py-1 text-xs font-semibold text-white">
             {photoCount} photos

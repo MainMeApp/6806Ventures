@@ -86,6 +86,33 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
               ))}
             </dl>
 
+            {property.privateRoom && (
+              <div className="mt-10 rounded-3xl bg-navy-800 p-7 text-white sm:p-8">
+                <p className="text-sm font-semibold uppercase tracking-widest text-sky">Also available</p>
+                <h2 className="mt-1 font-display text-2xl font-semibold">Private room</h2>
+                <p className="mt-2 text-navy-100">{property.privateRoom.summary}</p>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {property.privateRoom.features.map((f) => (
+                    <li key={f} className="flex gap-2">
+                      <svg aria-hidden viewBox="0 0 20 20" className="mt-1 size-5 shrink-0 text-sky" fill="currentColor">
+                        <path
+                          fillRule="evenodd"
+                          d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6">
+                  <ButtonLink href={`/contact?property=${property.slug}&topic=availability`} variant="accent">
+                    Ask about the private room
+                  </ButtonLink>
+                </div>
+              </div>
+            )}
+
             <div className="mt-10">
               <h2 className="font-display text-2xl font-semibold text-navy-900">Getting around</h2>
               <p className="mt-1 text-navy-700">Transit, trails, and parks near {property.streetName}.</p>

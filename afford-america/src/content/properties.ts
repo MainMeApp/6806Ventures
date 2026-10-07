@@ -39,6 +39,8 @@ export type Property = {
   // Describes main.* for screen readers; set it when the main photo is not the exterior.
   mainPhotoAlt?: string;
   features: string[];
+  // A private room in addition to the shared bedrooms. Pricing is quoted on request.
+  privateRoom?: { summary: string; features: string[] };
   getAround: { kind: GetAroundKind; title: string; detail: string }[];
 };
 
@@ -100,6 +102,17 @@ export const properties: Property[] = [
     bedrooms: 3,
     bathrooms: 2,
     mainPhotoAlt: "Kitchen with a marble island, bar seating, and stainless steel appliances",
+    privateRoom: {
+      summary:
+        "One private room sits in the home's duplex side, with its own entrance and bathroom, for a resident who needs their own space.",
+      features: [
+        "Separate private entrance",
+        "Private bathroom",
+        "Kitchenette with sink, mini fridge, and cabinets",
+        "Furnished bed with under-bed storage",
+        "TV access and personal headphones",
+      ],
+    },
     summary:
       "A home just north of Martin Luther King Jr. Drive, where Hunter Hills meets Mozley Park and West Lake, close to the West Lake MARTA station and the BeltLine's Westside Trail.",
     features: sharedFeatures,
