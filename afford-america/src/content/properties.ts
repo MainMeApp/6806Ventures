@@ -151,6 +151,7 @@ export const properties: Property[] = [
     availableBeds: 0,
     bedrooms: 2,
     bathrooms: 1,
+    mainPhotoAlt: "Kitchen with white cabinets, a side-by-side refrigerator, range, microwave, and dishwasher",
     summary:
       "A home in Chicamauga Heights, a historic pocket of Mozley Park, a few houses from an entrance to the BeltLine's Westside Trail.",
     features: sharedFeatures,
