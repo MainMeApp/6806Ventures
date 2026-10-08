@@ -106,7 +106,7 @@ export default function Home() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.5fr] lg:items-start">
           <div>
             <Eyebrow>The neighborhood</Eyebrow>
-            <H2>Connected to the Westside, the BeltLine, and MARTA</H2>
+            <H2>Connected to the Westside, the Beltline, and MARTA</H2>
             <p className="mt-4 text-lg">
               Our homes sit in Hunter Hills and Mozley Park, two historic West Atlanta neighborhoods about three miles
               from Downtown. Residents can get to appointments, services, and family across the city without a car.

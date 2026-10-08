@@ -7,7 +7,7 @@
 // Keep availableBeds accurate: the "only N left" and waitlist messaging is
 // driven by it, and overstating scarcity costs referral partners' trust.
 //
-// Location facts in `getAround` were checked against the Atlanta BeltLine,
+// Location facts in `getAround` were checked against the Atlanta Beltline,
 // PATH Foundation, MARTA, and neighborhood sources. Keep them factual; do not
 // add walking times without measuring them.
 
@@ -65,7 +65,7 @@ export const properties: Property[] = [
     bedrooms: 3,
     bathrooms: 2,
     summary:
-      "A home in Hunter Hills, a historic, tree-lined neighborhood between Joseph E. Boone Boulevard and Martin Luther King Jr. Drive, with Washington Park and the BeltLine on its eastern edge.",
+      "A home in Hunter Hills, a historic, tree-lined neighborhood between Joseph E. Boone Boulevard and Martin Luther King Jr. Drive, with Washington Park and the Beltline on its eastern edge.",
     features: sharedFeatures,
     getAround: [
       {
@@ -80,7 +80,7 @@ export const properties: Property[] = [
       },
       {
         kind: "trail",
-        title: "Atlanta BeltLine",
+        title: "Atlanta Beltline",
         detail: "The Westside Trail runs along the neighborhood's eastern edge at Washington Park.",
       },
       {
@@ -115,7 +115,7 @@ export const properties: Property[] = [
       ],
     },
     summary:
-      "A home just north of Martin Luther King Jr. Drive, where Hunter Hills meets Mozley Park and West Lake, close to the West Lake MARTA station and the BeltLine's Westside Trail.",
+      "A home just north of Martin Luther King Jr. Drive, where Hunter Hills meets Mozley Park and West Lake, close to the West Lake MARTA station and the Beltline's Westside Trail.",
     features: sharedFeatures,
     getAround: [
       {
@@ -130,7 +130,7 @@ export const properties: Property[] = [
       },
       {
         kind: "trail",
-        title: "Atlanta BeltLine",
+        title: "Atlanta Beltline",
         detail: "The Westside Trail, which ends at West Lake station, is a short trip east through Mozley Park.",
       },
       {
@@ -153,12 +153,12 @@ export const properties: Property[] = [
     bathrooms: 1,
     mainPhotoAlt: "Kitchen with white cabinets, a side-by-side refrigerator, range, microwave, and dishwasher",
     summary:
-      "A home in Chicamauga Heights, a historic pocket of Mozley Park, a few houses from an entrance to the BeltLine's Westside Trail.",
+      "A home in Chicamauga Heights, a historic pocket of Mozley Park, a few houses from an entrance to the Beltline's Westside Trail.",
     features: sharedFeatures,
     getAround: [
       {
         kind: "trail",
-        title: "Atlanta BeltLine",
+        title: "Atlanta Beltline",
         detail: "A Westside Trail entrance is a few houses away. Mozley Park has four direct entrances to the trail.",
       },
       {
@@ -239,7 +239,7 @@ export const areaHighlights: { kind: GetAroundKind; title: string; detail: strin
   },
   {
     kind: "trail",
-    title: "Atlanta BeltLine",
+    title: "Atlanta Beltline",
     detail: "The 2.7-mile Westside Trail runs from Ashby station to West Lake station, right past our homes.",
   },
   {
