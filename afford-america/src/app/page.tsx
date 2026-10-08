@@ -1,6 +1,6 @@
 import { ButtonLink, Check, Eyebrow, H2, Section } from "@/components/ui";
 import { PropertyCard } from "@/components/property-card";
-import { audiences, fundingRequirement, fundingSources, monthlyPackage, site } from "@/content/site";
+import { audiences, foodNote, fundingRequirement, fundingSources, monthlyPackage, site } from "@/content/site";
 import { areaHighlights, formatAvailabilityDate, properties, totalAvailableBeds, totalBeds } from "@/content/properties";
 import { GetAroundList } from "@/components/get-around";
 
@@ -48,6 +48,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-sm text-navy-700">{foodNote}</p>
             <div className="mt-6 rounded-xl bg-navy-50 px-4 py-3">
               <p className="font-semibold text-navy-900">
                 {available === 0

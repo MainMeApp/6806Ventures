@@ -7,7 +7,7 @@ import { PropertyPhoto } from "@/components/property-photo";
 import { PhotoCarousel } from "@/components/photo-carousel";
 import { displayAddress, formatAvailabilityDate, getProperty, properties } from "@/content/properties";
 import { GetAroundList } from "@/components/get-around";
-import { monthlyPackage, notProvided } from "@/content/site";
+import { foodNote, monthlyPackage, notProvided } from "@/content/site";
 import { getGalleryImages, getMainImage, mainImageAlt, photoLabel } from "@/lib/property-images";
 
 export const dynamicParams = false;
@@ -93,7 +93,7 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
                   <h2 className="font-display text-2xl font-semibold">Private room</h2>
                   <p className="font-display text-2xl font-semibold">
                     ${property.privateRoom.price.toLocaleString("en-US")}
-                    <span className="text-base font-normal text-navy-100"> / month, all-inclusive</span>
+                    <span className="text-base font-normal text-navy-100"> / month, same package as shared rooms</span>
                   </p>
                 </div>
                 <p className="mt-2 text-navy-100">{property.privateRoom.summary}</p>
@@ -155,6 +155,7 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-sm text-navy-700">{foodNote}</p>
             <div className="mt-6">
               <OccupancyBar total={property.totalBeds} available={property.availableBeds} />
               <p className="mt-1 text-xs text-navy-700">As of {formatAvailabilityDate()}</p>

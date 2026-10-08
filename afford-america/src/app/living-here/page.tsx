@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink, Check, Eyebrow, H2, PageHero, Section } from "@/components/ui";
-import { monthlyPackage, notProvided } from "@/content/site";
+import { foodNote, monthlyPackage, notProvided } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Living Here",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const rhythm = [
   ["Every day", "The house host sanitizes kitchens, bathrooms, and shared spaces. Residents keep their own room tidy."],
-  ["Every week", "Grocery orders are coordinated and delivered, including EBT/SNAP purchases."],
+  ["Every week", "Each resident's grocery order is coordinated and delivered, paid with their own SNAP benefits."],
   ["Every two weeks", "A professional cleaning crew cleans every common area, top to bottom."],
   ["Any time", "Residents come and go, keep their own appointments, and welcome their own care providers."],
 ];
@@ -37,6 +37,7 @@ export default function LivingHerePage() {
             </div>
           ))}
         </div>
+        <p className="mt-6 text-navy-700">{foodNote}</p>
       </Section>
 
       <Section className="bg-frost/60">

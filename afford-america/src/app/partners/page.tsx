@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink, Check, Cross, Eyebrow, H2, PageHero, Section } from "@/components/ui";
-import { audiences, fundingSources, monthlyPackage, notProvided, residentCriteria, site } from "@/content/site";
+import { audiences, foodNote, fundingSources, monthlyPackage, notProvided, residentCriteria, site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "For Referral Partners",
@@ -15,7 +15,11 @@ const faqs = [
   },
   {
     q: "How do shared bedrooms work? Do you have private rooms?",
-    a: "Each bedroom is shared by two residents, and each resident has their own bed and storage. Every resident also gets TV access and their own Bluetooth headphones, so one person can watch or listen while the other rests. For clients who need their own space, Chappell Road has a private room with a separate entrance, private bathroom, and kitchenette.",
+    a: "Each bedroom is shared by two residents, and each resident has their own bed and storage. Every resident also gets TV access, their own Netflix account, and Bluetooth headphones, so one person can watch or listen while the other rests. For clients who need their own space, Chappell Road has a private room with a separate entrance, private bathroom, and kitchenette.",
+  },
+  {
+    q: "Is food included?",
+    a: foodNote,
   },
   {
     q: "Do you provide medical or personal care?",
@@ -116,6 +120,7 @@ export default function PartnersPage() {
                 </li>
               ))}
             </ul>
+            <p className="mt-5 text-sm text-navy-700">{foodNote}</p>
           </div>
           <div>
             <Eyebrow>Funding</Eyebrow>

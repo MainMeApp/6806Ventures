@@ -47,7 +47,7 @@ export type Property = {
 const sharedFeatures = [
   "Fully furnished shared bedrooms",
   "All utilities and Wi-Fi included",
-  "TV access and personal headphones",
+  "TV, personal Netflix account, and headphones",
   "Daily sanitizing by the house host",
   "Professional cleaning every two weeks",
 ];
@@ -111,7 +111,7 @@ export const properties: Property[] = [
         "Private bathroom",
         "Kitchenette with sink, mini fridge, and cabinets",
         "Furnished bed with under-bed storage",
-        "TV access and personal headphones",
+        "TV, personal Netflix account, and headphones",
       ],
     },
     summary:

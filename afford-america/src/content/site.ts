@@ -19,15 +19,15 @@ export const monthlyPackage = {
   occupancy: "Shared furnished bedroom, two residents per room",
   includes: [
     {
-      title: "Furnished room and board",
+      title: "Furnished room",
       detail: "A shared bedroom in a renovated home with bed, linens, and dresser ready on day one. Residents bring personal clothing.",
     },
     { title: "All utilities and Wi-Fi", detail: "Power, water, gas, trash, and high-speed internet. No separate bills." },
     {
-      title: "TV access and personal headphones",
-      detail: "Every resident gets TV access and their own Bluetooth headphones, so shows and music never disturb a roommate.",
+      title: "TV, personal Netflix, and headphones",
+      detail: "Every resident gets TV access, their own Netflix account, and Bluetooth headphones, so shows and music never disturb a roommate.",
     },
-    { title: "Weekly grocery coordination", detail: "Grocery procurement logistics each week. EBT/SNAP compatible." },
+    { title: "Weekly grocery coordination", detail: "We organize each resident's weekly grocery order, paid with their own SNAP/EBT benefits." },
     {
       title: "Daily sanitizing and professional cleaning",
       detail: "The house host sanitizes kitchens, bathrooms, and shared spaces every day. A professional cleaning crew cleans them every two weeks.",
@@ -35,6 +35,9 @@ export const monthlyPackage = {
     { title: "Smart medication dispenser rental", detail: "Automated reminder and dispensing hardware residents use on their own schedule." },
   ],
 };
+
+// Food is the one cost outside the package; say so wherever the package is listed.
+export const foodNote = "Food is not included in the monthly price. Residents buy groceries with their own SNAP benefits, and we coordinate the weekly order.";
 
 export const fundingSources = [
   "HUD-VASH vouchers",
