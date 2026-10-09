@@ -64,6 +64,7 @@ export const properties: Property[] = [
     availableBeds: 2,
     bedrooms: 3,
     bathrooms: 2,
+    mainPhotoAlt: "Kitchen with blue-gray cabinets, white counters, subway tile, and stainless steel appliances",
     summary:
       "A home in Hunter Hills, a historic, tree-lined neighborhood between Joseph E. Boone Boulevard and Martin Luther King Jr. Drive, with Washington Park and the Beltline on its eastern edge.",
     features: sharedFeatures,
