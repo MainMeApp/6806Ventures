@@ -20,11 +20,10 @@ export async function generateMetadata({ params }: PageProps<"/properties/[slug]
   const { slug } = await params;
   const property = getProperty(slug);
   if (!property) return {};
-  const image = getMainImage(slug);
+  // Link previews use the site-wide logo card (app/opengraph-image.png).
   return {
     title: property.name,
     description: property.summary,
-    openGraph: image ? { images: [image] } : undefined,
   };
 }
 

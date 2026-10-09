@@ -9,7 +9,13 @@ const heading = Fraunces({ variable: "--font-heading", subsets: ["latin"] });
 const body = Source_Sans_3({ variable: "--font-body", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  // Absolute base for link-preview image URLs: the custom domain if set, else Vercel's production URL.
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+        : "http://localhost:3000"),
+  ),
   title: { default: `${site.brand} | Supportive Independent Living in Atlanta`, template: `%s | ${site.brand}` },
   description: site.description,
   openGraph: { siteName: site.brand, type: "website", locale: "en_US" },
