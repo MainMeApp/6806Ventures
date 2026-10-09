@@ -19,8 +19,8 @@ export const monthlyPackage = {
   occupancy: "Shared furnished bedroom, two residents per room",
   includes: [
     {
-      title: "Furnished room",
-      detail: "A shared bedroom in a renovated home with bed, linens, and dresser ready on day one. Residents bring personal clothing.",
+      title: "Furnished room with keyless entry",
+      detail: "A shared bedroom in a renovated home with bed, linens, and dresser ready on day one, behind keyless locks on the bedroom and front doors. Residents bring personal clothing.",
     },
     { title: "All utilities and Wi-Fi", detail: "Power, water, gas, trash, and high-speed internet. No separate bills." },
     {

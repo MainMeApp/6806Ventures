@@ -47,6 +47,7 @@ export type Property = {
 
 const sharedFeatures = [
   "Fully furnished shared bedrooms",
+  "Keyless entry on bedroom and front doors",
   "All utilities and Wi-Fi included",
   "TV, personal Netflix account, and headphones",
   "Daily sanitizing by the house host",
@@ -73,6 +74,7 @@ export const properties: Property[] = [
         "One private room sits in the home's duplex side, with its own entrance and bathroom, for a resident who needs their own space.",
       features: [
         "Separate private entrance",
+        "Keyless entry",
         "Private bathroom",
         "Kitchenette with sink, mini fridge, and cabinets",
         "Furnished bed with under-bed storage",
@@ -117,12 +119,16 @@ export const properties: Property[] = [
     bedrooms: 2,
     bathrooms: 1,
     mainPhotoAlt: "Kitchen with white cabinets, a side-by-side refrigerator, range, microwave, and dishwasher",
-    // TODO: confirm what else is private (bathroom, entrance) for these rooms.
     privateRoom: {
       count: 2,
       price: 1800,
-      summary: "Two private bedrooms for residents who need their own space, in addition to the shared rooms.",
-      features: ["Private furnished bedroom", "TV, personal Netflix account, and headphones"],
+      summary: "Two private bedrooms for residents who need their own space. Bathrooms and common areas are shared.",
+      features: [
+        "Private furnished bedroom",
+        "Keyless entry",
+        "Shared bathroom",
+        "TV, personal Netflix account, and headphones",
+      ],
     },
     summary:
       "A home in Chicamauga Heights, a historic pocket of Mozley Park, a few houses from an entrance to the Beltline's Westside Trail.",
