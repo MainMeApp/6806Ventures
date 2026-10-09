@@ -88,7 +88,7 @@ export function ReferralForm({
           <YesNoField
             name="monthlyIncomeConfirmed" defaultValue={v.monthlyIncomeConfirmed}
             label="Is 100% of the monthly package covered?"
-            hint={`Voucher, benefits, or combined sources covering the full $${monthlyPackage.price.toLocaleString("en-US")} for a shared room, or the private room price`}
+            hint={`Voucher, benefits, or combined sources covering the full $${monthlyPackage.price.toLocaleString("en-US")} for a shared room, or $1,800 for a private room`}
             required
             errors={e.monthlyIncomeConfirmed}
           />

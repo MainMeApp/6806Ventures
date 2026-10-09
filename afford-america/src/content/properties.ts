@@ -117,9 +117,10 @@ export const properties: Property[] = [
     bedrooms: 2,
     bathrooms: 1,
     mainPhotoAlt: "Kitchen with white cabinets, a side-by-side refrigerator, range, microwave, and dishwasher",
-    // TODO: add price and room details for the two private rooms.
+    // TODO: confirm what else is private (bathroom, entrance) for these rooms.
     privateRoom: {
       count: 2,
+      price: 1800,
       summary: "Two private bedrooms for residents who need their own space, in addition to the shared rooms.",
       features: ["Private furnished bedroom", "TV, personal Netflix account, and headphones"],
     },
