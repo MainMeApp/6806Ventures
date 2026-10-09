@@ -15,7 +15,7 @@ export default function PropertiesPage() {
         <p>
           Only {totalAvailableBeds()} of {totalBeds()} beds are open across our {properties.length} homes. Each home is
           small by design, so openings are limited. Bedrooms are shared by two residents and fully furnished,
-          and Chappell Road also has a private room with its own entrance and bathroom.
+          and Chappell Road and Chicamauga Avenue also have private rooms.
         </p>
       </PageHero>
       <Section>

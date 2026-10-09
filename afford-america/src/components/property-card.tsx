@@ -57,7 +57,8 @@ export function PropertyCard({ property }: { property: Property }) {
         />
         {property.privateRoom && (
           <span className="absolute left-3 top-3 rounded-full bg-teal-300 px-3 py-1 text-xs font-semibold text-navy-900">
-            Private room · ${property.privateRoom.price.toLocaleString("en-US")}/mo
+            {property.privateRoom.count > 1 ? `${property.privateRoom.count} private rooms` : "Private room"}
+            {property.privateRoom.price ? ` · $${property.privateRoom.price.toLocaleString("en-US")}/mo` : ""}
           </span>
         )}
         {photoCount > 1 && (

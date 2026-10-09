@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "How do shared bedrooms work? Do you have private rooms?",
-    a: "Each bedroom is shared by two residents, and each resident has their own bed and storage. Every resident also gets TV access, their own Netflix account, and Bluetooth headphones, so one person can watch or listen while the other rests. For clients who need their own space, Chappell Road has a private room with a separate entrance, private bathroom, and kitchenette.",
+    a: "Each bedroom is shared by two residents, and each resident has their own bed and storage. Every resident also gets TV access, their own Netflix account, and Bluetooth headphones, so one person can watch or listen while the other rests. For clients who need their own space, Chappell Road has a private room with a separate entrance, private bathroom, and kitchenette, and Chicamauga Avenue has two private bedrooms.",
   },
   {
     q: "Is food included?",

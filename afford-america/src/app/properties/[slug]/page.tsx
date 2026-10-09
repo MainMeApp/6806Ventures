@@ -89,11 +89,17 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
               <div className="mt-10 rounded-3xl bg-navy-800 p-7 text-white sm:p-8">
                 <p className="text-sm font-semibold uppercase tracking-widest text-teal-300">Also available</p>
                 <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-4">
-                  <h2 className="font-display text-2xl font-semibold">Private room</h2>
-                  <p className="font-display text-2xl font-semibold">
-                    ${property.privateRoom.price.toLocaleString("en-US")}
-                    <span className="text-base font-normal text-navy-100"> / month, same package as shared rooms</span>
-                  </p>
+                  <h2 className="font-display text-2xl font-semibold">
+                    {property.privateRoom.count > 1 ? `${property.privateRoom.count} private rooms` : "Private room"}
+                  </h2>
+                  {property.privateRoom.price ? (
+                    <p className="font-display text-2xl font-semibold">
+                      ${property.privateRoom.price.toLocaleString("en-US")}
+                      <span className="text-base font-normal text-navy-100"> / month, same package as shared rooms</span>
+                    </p>
+                  ) : (
+                    <p className="font-semibold text-teal-300">Ask about pricing</p>
+                  )}
                 </div>
                 <p className="mt-2 text-navy-100">{property.privateRoom.summary}</p>
                 <ul className="mt-5 grid gap-2 sm:grid-cols-2">
@@ -112,7 +118,7 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
                 </ul>
                 <div className="mt-6">
                   <ButtonLink href={`/refer?property=${property.slug}:private`} variant="accent">
-                    Refer a client for this room
+                    {property.privateRoom.count > 1 ? "Refer a client for a private room" : "Refer a client for this room"}
                   </ButtonLink>
                 </div>
               </div>

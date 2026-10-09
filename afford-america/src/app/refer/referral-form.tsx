@@ -3,9 +3,7 @@
 import { useActionState } from "react";
 import { submitReferral, type FormState } from "@/app/actions";
 import { monthlyPackage } from "@/content/site";
-import { properties } from "@/content/properties";
 
-const privatePrice = properties.find((p) => p.privateRoom)?.privateRoom?.price;
 import { FormStatus, Honeypot, SelectField, TextArea, TextField, YesNoField } from "@/components/form-fields";
 
 const initial: FormState = { status: "idle" };
@@ -90,7 +88,7 @@ export function ReferralForm({
           <YesNoField
             name="monthlyIncomeConfirmed" defaultValue={v.monthlyIncomeConfirmed}
             label="Is 100% of the monthly package covered?"
-            hint={`Voucher, benefits, or combined sources covering the full $${monthlyPackage.price.toLocaleString("en-US")} (shared room)${privatePrice ? ` or $${privatePrice.toLocaleString("en-US")} (private room)` : ""}`}
+            hint={`Voucher, benefits, or combined sources covering the full $${monthlyPackage.price.toLocaleString("en-US")} for a shared room, or the private room price`}
             required
             errors={e.monthlyIncomeConfirmed}
           />

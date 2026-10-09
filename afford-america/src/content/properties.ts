@@ -39,8 +39,9 @@ export type Property = {
   // Describes main.* for screen readers; set it when the main photo is not the exterior.
   mainPhotoAlt?: string;
   features: string[];
-  // A private room separate from the shared beds (not counted in totalBeds).
-  privateRoom?: { price: number; summary: string; features: string[] };
+  // Private rooms, separate from the shared beds (not counted in totalBeds).
+  // Leave price out to show "Ask about pricing".
+  privateRoom?: { count: number; price?: number; summary: string; features: string[] };
   getAround: { kind: GetAroundKind; title: string; detail: string }[];
 };
 
@@ -66,6 +67,7 @@ export const properties: Property[] = [
     bathrooms: 2,
     mainPhotoAlt: "Kitchen with a marble island, bar seating, and stainless steel appliances",
     privateRoom: {
+      count: 1,
       price: 1800,
       summary:
         "One private room sits in the home's duplex side, with its own entrance and bathroom, for a resident who needs their own space.",
@@ -115,6 +117,12 @@ export const properties: Property[] = [
     bedrooms: 2,
     bathrooms: 1,
     mainPhotoAlt: "Kitchen with white cabinets, a side-by-side refrigerator, range, microwave, and dishwasher",
+    // TODO: add price and room details for the two private rooms.
+    privateRoom: {
+      count: 2,
+      summary: "Two private bedrooms for residents who need their own space, in addition to the shared rooms.",
+      features: ["Private furnished bedroom", "TV, personal Netflix account, and headphones"],
+    },
     summary:
       "A home in Chicamauga Heights, a historic pocket of Mozley Park, a few houses from an entrance to the Beltline's Westside Trail.",
     features: sharedFeatures,
@@ -199,11 +207,15 @@ export function placementOptions(withAvailability = false) {
     if (p.privateRoom) {
       options.push({
         value: p.slug + PRIVATE_SUFFIX,
-        label: `${p.name}, private room ($${p.privateRoom.price.toLocaleString("en-US")}/mo)`,
+        label: `${p.name}, private room (${privateRoomPrice(p) ?? "ask for pricing"})`,
       });
     }
     return options;
   });
+}
+
+export function privateRoomPrice(p: Property) {
+  return p.privateRoom?.price ? `$${p.privateRoom.price.toLocaleString("en-US")}/mo` : null;
 }
 
 export function placementName(value: string) {
