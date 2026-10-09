@@ -39,7 +39,14 @@ function describedBy(p: BaseProps) {
 }
 
 export function TextField(
-  props: BaseProps & { type?: string; autoComplete?: string; defaultValue?: string; maxLength?: number; placeholder?: string },
+  props: BaseProps & {
+    type?: string;
+    autoComplete?: string;
+    defaultValue?: string;
+    maxLength?: number;
+    placeholder?: string;
+    min?: string;
+  },
 ) {
   return (
     <FieldShell {...props}>
@@ -51,6 +58,7 @@ export function TextField(
         autoComplete={props.autoComplete}
         defaultValue={props.defaultValue}
         maxLength={props.maxLength}
+        min={props.min}
         placeholder={props.placeholder}
         aria-invalid={props.errors?.length ? true : undefined}
         aria-describedby={describedBy(props)}
@@ -79,7 +87,12 @@ export function TextArea(props: BaseProps & { rows?: number; defaultValue?: stri
 }
 
 export function SelectField(
-  props: BaseProps & { options: { value: string; label: string }[]; defaultValue?: string; placeholder?: string },
+  props: BaseProps & {
+    options: { value: string; label: string }[];
+    defaultValue?: string;
+    placeholder?: string;
+    onChange?: (value: string) => void;
+  },
 ) {
   return (
     <FieldShell {...props}>
@@ -88,6 +101,7 @@ export function SelectField(
         name={props.name}
         required={props.required}
         defaultValue={props.defaultValue ?? ""}
+        onChange={props.onChange ? (ev) => props.onChange!(ev.target.value) : undefined}
         aria-invalid={props.errors?.length ? true : undefined}
         aria-describedby={describedBy(props)}
         className={inputClass}

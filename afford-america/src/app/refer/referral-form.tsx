@@ -19,6 +19,7 @@ export function ReferralForm({
 }) {
   const [state, action, pending] = useActionState(submitReferral, initial);
   const e = state.errors ?? {};
+  const v = state.values ?? {};
 
   if (state.status === "success") {
     return (
@@ -30,18 +31,18 @@ export function ReferralForm({
   }
 
   return (
-    <form action={action} className="relative space-y-10 rounded-3xl bg-white p-6 ring-1 ring-navy-100 sm:p-10" noValidate>
+    <form key={state.attempt ?? 0} action={action} className="relative space-y-10 rounded-3xl bg-white p-6 ring-1 ring-navy-100 sm:p-10" noValidate>
       <Honeypot />
       <FormStatus status={state.status} message={state.message} />
 
       <fieldset className="space-y-5">
         <legend className="font-display text-2xl font-semibold text-navy-900">1. About you</legend>
         <div className="grid gap-5 sm:grid-cols-2">
-          <TextField name="referrerName" label="Your name" required autoComplete="name" errors={e.referrerName} />
-          <TextField name="referrerOrg" label="Organization" required autoComplete="organization" errors={e.referrerOrg} />
-          <TextField name="referrerRole" label="Role or title" hint="e.g. HUD-VASH Housing Specialist" errors={e.referrerRole} />
-          <TextField name="referrerPhone" label="Phone" type="tel" required autoComplete="tel" errors={e.referrerPhone} />
-          <TextField name="referrerEmail" label="Work email" type="email" required autoComplete="email" errors={e.referrerEmail} className="sm:col-span-2" />
+          <TextField name="referrerName" defaultValue={v.referrerName} label="Your name" required autoComplete="name" errors={e.referrerName} />
+          <TextField name="referrerOrg" defaultValue={v.referrerOrg} label="Organization" required autoComplete="organization" errors={e.referrerOrg} />
+          <TextField name="referrerRole" defaultValue={v.referrerRole} label="Role or title" hint="e.g. HUD-VASH Housing Specialist" errors={e.referrerRole} />
+          <TextField name="referrerPhone" defaultValue={v.referrerPhone} label="Phone" type="tel" required autoComplete="tel" errors={e.referrerPhone} />
+          <TextField name="referrerEmail" defaultValue={v.referrerEmail} label="Work email" type="email" required autoComplete="email" errors={e.referrerEmail} className="sm:col-span-2" />
         </div>
       </fieldset>
 
@@ -52,9 +53,9 @@ export function ReferralForm({
           medical records. We will collect what we need securely during the screening call.
         </p>
         <div className="grid gap-5 sm:grid-cols-2">
-          <TextField name="clientInitials" label="Client initials" required maxLength={6} errors={e.clientInitials} />
+          <TextField name="clientInitials" defaultValue={v.clientInitials} label="Client initials" required maxLength={6} errors={e.clientInitials} />
           <SelectField
-            name="clientAgeRange"
+            name="clientAgeRange" defaultValue={v.clientAgeRange}
             label="Age range"
             required
             errors={e.clientAgeRange}
@@ -65,14 +66,14 @@ export function ReferralForm({
             ]}
           />
           <TextField
-            name="fundingSource"
+            name="fundingSource" defaultValue={v.fundingSource}
             label="Funding source"
             required
             hint="e.g. HUD-VASH, GHVP, SSDI, SSI, VA pension"
             errors={e.fundingSource}
           />
           <SelectField
-            name="moveInTimeframe"
+            name="moveInTimeframe" defaultValue={v.moveInTimeframe}
             label="Needed move-in"
             required
             errors={e.moveInTimeframe}
@@ -85,24 +86,24 @@ export function ReferralForm({
           />
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
-          <YesNoField name="veteran" label="Is the client a veteran?" required errors={e.veteran} />
+          <YesNoField name="veteran" defaultValue={v.veteran} label="Is the client a veteran?" required errors={e.veteran} />
           <YesNoField
-            name="monthlyIncomeConfirmed"
+            name="monthlyIncomeConfirmed" defaultValue={v.monthlyIncomeConfirmed}
             label="Is 100% of the monthly package covered?"
             hint={`Voucher, benefits, or combined sources covering the full $${monthlyPackage.price.toLocaleString("en-US")} (shared room)${privatePrice ? ` or $${privatePrice.toLocaleString("en-US")} (private room)` : ""}`}
             required
             errors={e.monthlyIncomeConfirmed}
           />
-          <YesNoField name="ambulatory" label="Is the client ambulatory?" required errors={e.ambulatory} />
+          <YesNoField name="ambulatory" defaultValue={v.ambulatory} label="Is the client ambulatory?" required errors={e.ambulatory} />
           <YesNoField
-            name="independentAdls"
+            name="independentAdls" defaultValue={v.independentAdls}
             label="Independent with daily living activities?"
             hint="Bathing, dressing, eating without staff help"
             required
             errors={e.independentAdls}
           />
           <YesNoField
-            name="selfMedicates"
+            name="selfMedicates" defaultValue={v.selfMedicates}
             label="Manages their own medications?"
             required
             errors={e.selfMedicates}
@@ -115,20 +116,20 @@ export function ReferralForm({
         <SelectField
           name="preferredProperty"
           label="Preferred property"
-          defaultValue={defaultProperty}
+          defaultValue={v.preferredProperty ?? defaultProperty}
           placeholder="No preference"
           options={propertyOptions}
           errors={e.preferredProperty}
         />
         <TextArea
-          name="notes"
+          name="notes" defaultValue={v.notes}
           label="Anything else we should know?"
           hint="Scheduling needs, transportation, pets, preferred contact times. No medical details."
           maxLength={1500}
           errors={e.notes}
         />
         <label className="flex items-start gap-3">
-          <input type="checkbox" name="consent" required className="mt-1.5 size-5 accent-navy-700" />
+          <input type="checkbox" name="consent" required defaultChecked={v.consent === "on"} className="mt-1.5 size-5 accent-navy-700" />
           <span>
             The client knows about and agrees to this housing referral, and I am authorized to share this information.
             <span className="text-alert"> *</span>

@@ -54,44 +54,6 @@ const sharedFeatures = [
 
 export const properties: Property[] = [
   {
-    slug: "sharon-street",
-    name: "Sharon Street House",
-    address: "1370 Sharon St NW",
-    streetName: "Sharon St NW",
-    neighborhood: "Hunter Hills",
-    zip: "30314",
-    totalBeds: 6,
-    availableBeds: 2,
-    bedrooms: 3,
-    bathrooms: 2,
-    mainPhotoAlt: "Kitchen with blue-gray cabinets, white counters, subway tile, and stainless steel appliances",
-    summary:
-      "A home in Hunter Hills, a historic, tree-lined neighborhood between Joseph E. Boone Boulevard and Martin Luther King Jr. Drive, with Washington Park and the Beltline on its eastern edge.",
-    features: sharedFeatures,
-    getAround: [
-      {
-        kind: "rail",
-        title: "MARTA rail",
-        detail: "Ashby, West Lake, and Bankhead stations serve Hunter Hills, with direct trains to Downtown and Midtown.",
-      },
-      {
-        kind: "bus",
-        title: "MARTA buses",
-        detail: "Route 51 runs along Joseph E. Boone Blvd, Route 3 along Martin Luther King Jr. Dr, and Route 853 serves the neighborhood.",
-      },
-      {
-        kind: "trail",
-        title: "Atlanta Beltline",
-        detail: "The Westside Trail runs along the neighborhood's eastern edge at Washington Park.",
-      },
-      {
-        kind: "park",
-        title: "Parks and trails",
-        detail: "The Lionel Hampton Trail runs through Hunter Hills, linking Washington Park and Mozley Park.",
-      },
-    ],
-  },
-  {
     slug: "chappell-road",
     name: "Chappell Road House",
     address: "64 Chappell Rd NW",
@@ -176,6 +138,44 @@ export const properties: Property[] = [
         kind: "park",
         title: "Mozley Park",
         detail: "A recreation center, public pool, dog park, playgrounds, and tennis and basketball courts.",
+      },
+    ],
+  },
+  {
+    slug: "sharon-street",
+    name: "Sharon Street House",
+    address: "1370 Sharon St NW",
+    streetName: "Sharon St NW",
+    neighborhood: "Hunter Hills",
+    zip: "30314",
+    totalBeds: 6,
+    availableBeds: 2,
+    bedrooms: 3,
+    bathrooms: 2,
+    mainPhotoAlt: "Kitchen with blue-gray cabinets, white counters, subway tile, and stainless steel appliances",
+    summary:
+      "A home in Hunter Hills, a historic, tree-lined neighborhood between Joseph E. Boone Boulevard and Martin Luther King Jr. Drive, with Washington Park and the Beltline on its eastern edge.",
+    features: sharedFeatures,
+    getAround: [
+      {
+        kind: "rail",
+        title: "MARTA rail",
+        detail: "Ashby, West Lake, and Bankhead stations serve Hunter Hills, with direct trains to Downtown and Midtown.",
+      },
+      {
+        kind: "bus",
+        title: "MARTA buses",
+        detail: "Route 51 runs along Joseph E. Boone Blvd, Route 3 along Martin Luther King Jr. Dr, and Route 853 serves the neighborhood.",
+      },
+      {
+        kind: "trail",
+        title: "Atlanta Beltline",
+        detail: "The Westside Trail runs along the neighborhood's eastern edge at Washington Park.",
+      },
+      {
+        kind: "park",
+        title: "Parks and trails",
+        detail: "The Lionel Hampton Trail runs through Hunter Hills, linking Washington Park and Mozley Park.",
       },
     ],
   },

@@ -44,18 +44,27 @@ Landscape photos around 1600px wide work best. Next.js resizes and compresses th
 
 ## Form submissions
 
-Referral and tour forms are validated on the server and include a honeypot spam trap.
+Two forms send email:
 
-- **Local testing (default):** submissions are printed to the server log and appended to `.data/submissions.jsonl` (gitignored).
-- **Email delivery:** set these environment variables to send each submission as a plain-text email through [Resend](https://resend.com):
+- **Referral portal** (`/refer`): emails you every referral, and thanks the referrer.
+- **Tour & contact** (`/contact`): "Book a tour" collects tour type (in person or video), date, and time of day; other topics (availability, waitlist, partnerships) send a general inquiry.
 
-| Variable | Example |
+Every notification is a formatted email with all the details. Replying to it goes straight to the person who submitted. Forms are validated on the server, keep the visitor's answers if something needs fixing, and include a honeypot spam trap.
+
+### Setup (once)
+
+1. In [Resend](https://resend.com), add and verify the domain `affordamerica.org` (add the DNS records Resend shows at your domain registrar).
+2. Create a Resend API key with sending access.
+3. In the Vercel project, set these environment variables and redeploy:
+
+| Variable | Value |
 | --- | --- |
-| `RESEND_API_KEY` | `re_...` |
-| `SUBMISSIONS_TO_EMAIL` | `placements@yourdomain.com` (comma-separate for several) |
-| `SUBMISSIONS_FROM_EMAIL` | `Afford America <noreply@yourdomain.com>` (domain must be verified in Resend) |
+| `RESEND_API_KEY` | the key from step 2 |
+| `SUBMISSIONS_FROM_EMAIL` | `Afford America Community Living <noreply@affordamerica.org>` |
+| `SUBMISSIONS_TO_EMAIL` | where notifications go; defaults to `info@affordamerica.org` (comma-separate for several) |
+| `SEND_CONFIRMATION_EMAILS` | `true` to email visitors a confirmation (only after the domain is verified) |
 
-On a serverless host without email configured, submissions only reach the logs, so set these before sharing the referral link.
+Without `RESEND_API_KEY`, a live site shows visitors an error asking them to email you directly, so no submission is silently lost. Locally, submissions are saved to `.data/submissions.jsonl` (gitignored) for testing.
 
 The referral form deliberately collects client initials only and asks referrers not to send diagnoses, DOBs, SSNs, or records.
 
