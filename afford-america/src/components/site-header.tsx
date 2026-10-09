@@ -17,8 +17,8 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center gap-3" aria-label={`${site.brand} home`}>
           <Image src="/brand/logo-mark.png" alt="" width={72} height={40} preload className="h-10 w-auto" />
           <span className="leading-tight">
-            <span className="block text-lg font-bold uppercase tracking-wide text-brand-navy">{site.shortBrand}</span>
-            <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal">Community Living</span>
+            <span className="block text-lg font-bold uppercase tracking-wide text-navy-800">{site.shortBrand}</span>
+            <span className="block text-xs font-semibold uppercase tracking-[0.2em] text-teal-700">Community Living</span>
           </span>
         </Link>
 

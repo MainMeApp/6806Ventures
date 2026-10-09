@@ -88,7 +88,7 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
 
             {property.privateRoom && (
               <div className="mt-10 rounded-3xl bg-navy-800 p-7 text-white sm:p-8">
-                <p className="text-sm font-semibold uppercase tracking-widest text-sky">Also available</p>
+                <p className="text-sm font-semibold uppercase tracking-widest text-teal-300">Also available</p>
                 <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-4">
                   <h2 className="font-display text-2xl font-semibold">Private room</h2>
                   <p className="font-display text-2xl font-semibold">
@@ -100,7 +100,7 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
                 <ul className="mt-5 grid gap-2 sm:grid-cols-2">
                   {property.privateRoom.features.map((f) => (
                     <li key={f} className="flex gap-2">
-                      <svg aria-hidden viewBox="0 0 20 20" className="mt-1 size-5 shrink-0 text-sky" fill="currentColor">
+                      <svg aria-hidden viewBox="0 0 20 20" className="mt-1 size-5 shrink-0 text-teal-300" fill="currentColor">
                         <path
                           fillRule="evenodd"
                           d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z"
@@ -142,7 +142,7 @@ export default async function PropertyPage({ params }: PageProps<"/properties/[s
           </div>
 
           <aside className="h-fit rounded-3xl bg-white p-7 ring-1 ring-navy-100 lg:sticky lg:top-24">
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent">All-inclusive</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-teal-700">All-inclusive</p>
             <p className="mt-1 font-display text-4xl font-semibold text-navy-900">
               ${monthlyPackage.price.toLocaleString("en-US")}
               <span className="text-base font-normal text-navy-700"> / month</span>

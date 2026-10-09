@@ -102,7 +102,7 @@ export function PhotoCarousel({ photos, label }: { photos: Photo[]; label: strin
               aria-label={`Show photo ${i + 1}: ${photo.alt}`}
               aria-current={i === index}
               className={`relative aspect-4/3 w-20 shrink-0 overflow-hidden rounded-lg ring-2 transition sm:w-24 ${
-                i === index ? "ring-sky" : "opacity-70 ring-transparent hover:opacity-100"
+                i === index ? "ring-teal-300" : "opacity-70 ring-transparent hover:opacity-100"
               }`}
             >
               <Image src={photo.src} alt="" fill sizes="96px" className="object-cover" />

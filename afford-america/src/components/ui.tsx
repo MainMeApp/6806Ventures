@@ -6,7 +6,7 @@ type ButtonProps = ComponentProps<typeof Link> & { variant?: "primary" | "accent
 const variants = {
   primary: "bg-navy-700 text-white hover:bg-navy-800",
   // For navy backgrounds, where a navy button would disappear.
-  accent: "bg-sky text-navy-900 hover:bg-sky-light",
+  accent: "bg-teal-300 text-navy-900 hover:bg-teal-200",
   secondary: "border-2 border-navy-700 text-navy-800 hover:bg-navy-50",
   light: "bg-white text-navy-900 hover:bg-frost",
 };
@@ -37,7 +37,7 @@ export function Section({
 }
 
 export function Eyebrow({ children }: { children: ReactNode }) {
-  return <p className="text-sm font-semibold uppercase tracking-widest text-accent">{children}</p>;
+  return <p className="text-sm font-semibold uppercase tracking-widest text-teal-700">{children}</p>;
 }
 
 export function H2({ children, className = "" }: { children: ReactNode; className?: string }) {

@@ -10,7 +10,7 @@ export function SiteFooter() {
         <div>
           <Image src="/brand/logo-mark-light.png" alt="" width={86} height={48} className="h-12 w-auto" />
           <p className="mt-3 text-lg font-bold uppercase tracking-wide text-white">{site.shortBrand}</p>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">Community Living</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-300">Community Living</p>
           <p className="mt-3 text-sm">{site.tagline}</p>
           <p className="mt-4 text-sm">{site.serviceArea}</p>
         </div>

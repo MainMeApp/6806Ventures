@@ -46,7 +46,7 @@ export default function LivingHerePage() {
         <dl className="mt-8 grid gap-6 md:grid-cols-2">
           {rhythm.map(([when, what]) => (
             <div key={when} className="flex gap-5 rounded-2xl bg-white p-6 ring-1 ring-navy-100">
-              <dt className="w-36 shrink-0 font-display text-xl font-semibold text-accent">{when}</dt>
+              <dt className="w-36 shrink-0 font-display text-xl font-semibold text-teal-700">{when}</dt>
               <dd>{what}</dd>
             </div>
           ))}

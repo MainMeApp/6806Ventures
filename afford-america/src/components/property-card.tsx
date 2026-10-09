@@ -7,7 +7,7 @@ export function AvailabilityBadge({ available }: { available: number }) {
   const full = available === 0;
   const low = !full && available <= LOW_AVAILABILITY;
   const tone = full ? "bg-frost text-ink" : low ? "bg-navy-800 text-white" : "bg-navy-100 text-navy-800";
-  const dot = full ? "bg-accent" : low ? "bg-sky" : "bg-navy-600";
+  const dot = full ? "bg-teal-700" : low ? "bg-teal-300" : "bg-navy-600";
   const label = full
     ? "Full · waitlist open"
     : low
@@ -31,7 +31,7 @@ export function OccupancyBar({ total, available, onDark = false }: { total: numb
           <span
             key={i}
             className={`h-2 flex-1 rounded-full ${
-              i < occupied ? (onDark ? "bg-navy-200" : "bg-navy-700") : "bg-sky"
+              i < occupied ? (onDark ? "bg-navy-200" : "bg-navy-700") : "bg-teal-500"
             }`}
           />
         ))}
@@ -56,7 +56,7 @@ export function PropertyCard({ property }: { property: Property }) {
           className="aspect-4/3"
         />
         {property.privateRoom && (
-          <span className="absolute left-3 top-3 rounded-full bg-sky px-3 py-1 text-xs font-semibold text-navy-900">
+          <span className="absolute left-3 top-3 rounded-full bg-teal-300 px-3 py-1 text-xs font-semibold text-navy-900">
             Private room · ${property.privateRoom.price.toLocaleString("en-US")}/mo
           </span>
         )}

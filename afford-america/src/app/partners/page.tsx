@@ -145,7 +145,7 @@ export default function PartnersPage() {
               <summary className="cursor-pointer list-none text-lg font-semibold text-navy-900">
                 <span className="flex items-center justify-between gap-4">
                   {f.q}
-                  <span aria-hidden className="text-2xl text-accent transition-transform group-open:rotate-45">
+                  <span aria-hidden className="text-2xl text-teal-700 transition-transform group-open:rotate-45">
                     +
                   </span>
                 </span>

@@ -34,7 +34,7 @@ export default function Home() {
           </div>
 
           <div className="rounded-3xl bg-white p-8 text-ink shadow-xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-accent">{monthlyPackage.label}</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-teal-700">{monthlyPackage.label}</p>
             <p className="mt-2 font-display text-5xl font-semibold text-navy-900">
               ${monthlyPackage.price.toLocaleString("en-US")}
               <span className="text-lg font-normal text-navy-700"> / month</span>
