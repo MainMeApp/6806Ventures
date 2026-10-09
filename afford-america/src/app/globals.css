@@ -15,6 +15,9 @@
   --color-mist: #f6f9fd;
   --color-frost: #e6eef8;
   --color-alert: #b42318;
+  /* From the logo. brand-teal is a touch darker than the logo's #1e848b so small text passes AA. */
+  --color-brand-navy: #142a4a;
+  --color-brand-teal: #18727a;
   --color-ink: #16233a;
   --font-sans: var(--font-body);
   --font-display: var(--font-heading);

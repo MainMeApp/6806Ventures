@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site, notProvided } from "@/content/site";
 import { navItems } from "./site-header";
@@ -7,7 +8,9 @@ export function SiteFooter() {
     <footer className="bg-navy-900 px-4 py-14 text-navy-100 sm:px-6">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
         <div>
-          <p className="font-display text-xl font-semibold text-white">{site.brand}</p>
+          <Image src="/brand/logo-mark-light.png" alt="" width={86} height={48} className="h-12 w-auto" />
+          <p className="mt-3 text-lg font-bold uppercase tracking-wide text-white">{site.shortBrand}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sky">Community Living</p>
           <p className="mt-3 text-sm">{site.tagline}</p>
           <p className="mt-4 text-sm">{site.serviceArea}</p>
         </div>
