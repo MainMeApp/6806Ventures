@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const rhythm = [
   ["Every day", "The house host sanitizes kitchens, bathrooms, and shared spaces. Residents keep their own room tidy."],
-  ["Every week", "Each resident's grocery order is coordinated and delivered, paid with their own SNAP benefits."],
+  ["Every week", "We help each resident place their own grocery order with their SNAP EBT card, delivered to the house."],
   ["Every two weeks", "A professional cleaning crew cleans every common area, top to bottom."],
   ["Any time", "Residents come and go, keep their own appointments, and welcome their own care providers."],
 ];
