@@ -9,6 +9,8 @@ export const site = {
   description:
     "Fully furnished, non-clinical supportive independent living in West Atlanta (30314) for adults 55+, veterans, and adults who thrive in a structured home. One flat monthly package. Referrals welcome from case managers, social workers, and discharge planners.",
   email: "info@affordamerica.org",
+  phone: "(678) 257-7654",
+  phoneHref: "tel:+16782577654",
   serviceArea: "West Atlanta, GA 30314",
   hours: "Monday to Friday, 9am to 6pm. Same-week tours available.",
 };

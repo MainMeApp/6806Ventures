@@ -40,7 +40,7 @@ Landscape photos around 1600px wide work best. Next.js resizes and compresses th
 - Business details, package, funding sources, resident criteria: `src/content/site.ts`
 - Properties (names, beds available, features): `src/content/properties.ts`
 
-`properties.ts` holds the three real homes. Bed, bedroom, and bathroom counts are still placeholders (marked `TODO`). House numbers are hidden on the public site unless `SHOW_HOUSE_NUMBERS` is set to `true`. The site has no phone number by design; all contact goes to the email in `site.ts`.
+`properties.ts` holds the three real homes. Bed, bedroom, and bathroom counts are still placeholders (marked `TODO`). House numbers are hidden on the public site unless `SHOW_HOUSE_NUMBERS` is set to `true`. The business phone number (678) 257-7654 is stored as `phone`/`phoneHref` in `site.ts` and shown beside the email on contact surfaces.
 
 ## Form submissions
 

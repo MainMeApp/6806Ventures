@@ -36,6 +36,12 @@ export default async function ContactPage({ searchParams }: PageProps<"/contact"
               </a>
             </div>
             <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-navy-200">Phone</p>
+              <a href={site.phoneHref} className="font-display text-2xl font-semibold text-white">
+                {site.phone}
+              </a>
+            </div>
+            <div>
               <p className="text-sm font-semibold uppercase tracking-widest text-navy-200">Hours</p>
               <p>{site.hours}</p>
             </div>

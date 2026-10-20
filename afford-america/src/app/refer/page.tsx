@@ -22,7 +22,7 @@ export default async function ReferPage({ searchParams }: PageProps<"/refer">) {
           <a href={`mailto:${site.email}`} className="font-semibold text-white underline">
             {site.email}
           </a>{" "}
-          with &ldquo;Urgent&rdquo; in the subject line.
+          with &ldquo;Urgent&rdquo; in the subject line, or call <a href={site.phoneHref} className="font-semibold text-white underline">{site.phone}</a>.
         </p>
       </PageHero>
       <Section>

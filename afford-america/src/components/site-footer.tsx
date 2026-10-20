@@ -22,6 +22,11 @@ export function SiteFooter() {
                 {site.email}
               </a>
             </li>
+            <li>
+              <a href={site.phoneHref} className="hover:text-white">
+                {site.phone}
+              </a>
+            </li>
             <li>{site.hours}</li>
           </ul>
         </div>

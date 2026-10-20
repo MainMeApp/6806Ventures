@@ -85,7 +85,7 @@ export default function PartnersPage() {
               ))}
             </ul>
             <p className="mt-5 text-sm text-navy-700">
-              Not sure? Email us at {site.email}. We would rather talk it through than turn someone away on paper.
+              Not sure? Email us at {site.email}, or call{" "}<a href={site.phoneHref} className="underline">{site.phone}</a>. We would rather talk it through than turn someone away on paper.
             </p>
           </div>
         </div>
